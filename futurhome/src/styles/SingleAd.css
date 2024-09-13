@@ -1,0 +1,218 @@
+.single-ad {
+  margin: auto;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  /* width: 940px; */
+  width: 85%;
+  overflow: hidden;
+}
+
+.single-ad-content {
+  display: flex;
+  position: relative;
+}
+
+.single-ad-pictures-container {
+  display: flex;
+  height: 312px;
+  width: 826px;
+}
+
+.single-ad-pictures {
+  position: relative;
+  height: 312px;
+  width: 50%;
+  flex-shrink: 0;
+}
+
+.single-ad-pictures img {
+  width: 100%;
+  height: 312px;
+  object-fit: cover;
+  border-bottom-left-radius: 0.8rem;
+}
+
+.single-ad-right-pictures-container {
+  display: flex;
+  width: 50%;
+}
+
+.single-ad-right-picture {
+  height: 48.5%;
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+
+.single-ad-right-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.single-ad-arrow-next {
+  display: block !important;
+  position: absolute !important;
+  right: 10px !important;
+  z-index: 2 !important;
+}
+
+.single-ad-arrow-prev {
+  display: block !important;
+  position: absolute !important;
+  left: 10px !important;
+  top: 50% !important;
+  z-index: 2 !important;
+}
+
+.slick-dots.custom-dots {
+  position: absolute;
+  top: 220px;
+  right: 0;
+}
+
+.slick-dots.custom-dots li {
+  margin: 0 3px;
+}
+
+.slick-dots.custom-dots li button:before {
+  color: white !important;
+  opacity: 0.8 !important;
+}
+
+.slick-dots.custom-dots li.slick-active button:before {
+  font-size: 12px;
+  opacity: 1 !important;
+}
+
+.pictures-count {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  z-index: 2;
+}
+
+.pictures-count i {
+  margin-right: 5px;
+}
+
+.single-ad-price {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.single-ad-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 20px 15px 20px;
+}
+
+.single-ad-street {
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+.single-ad-location {
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+.single-ad-description {
+  font-size: 14px;
+  margin-top: 35px;
+}
+
+.single-ad-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  font-size: 14px;
+  color: black;
+}
+
+.single-ad-stat {
+  display: flex;
+  font-weight: 500;
+}
+
+.single-ad-stat-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.single-ad-stat:first-child {
+  padding-left: 44px;
+}
+
+.single-ad-stat:last-child {
+  padding-right: 44px;
+}
+
+.single-ad-stat-value {
+  font-weight: 700;
+  margin-left: 5px;
+}
+
+.single-ad-buttons {
+  display: flex;
+  width: 450px;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  justify-content: center;
+  /* background-color: rgb(185, 215, 185); */
+  /* background-color: #ececec; */
+  /* background-color: rgb(205, 223, 205); */
+  background-color: #139a43;
+  border-radius: 10px;
+  padding: 15px 100px;
+}
+
+.single-ad-buttons button {
+  border: none;
+  background-color: transparent;
+  /* color: black; */
+  color: white;
+  cursor: pointer;
+  font-size: 17px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+}
+
+.single-ad-buttons-icon {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.interaction-count {
+  font-size: 16px;
+  margin-left: 4px;
+}
+
+.picture-top-right-border-radius {
+  border-top-right-radius: 0.8rem;
+}
+
+.picture-bottom-right-border-radius {
+  border-bottom-right-radius: 0.8rem;
+}
+
+@media (max-width: 600px) {
+  .ad {
+    max-width: 400px;
+  }
+}

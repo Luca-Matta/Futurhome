@@ -1,0 +1,109 @@
+.calendar-container {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.calendar-profile-section {
+  width: 28%;
+}
+
+.profile-picture {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.calendar-section {
+  width: 38%;
+}
+
+.selected-day-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 28%;
+  overflow-y: auto; /* Add a scrollbar if the content overflows */
+  height: 310px; /* Adjust as needed */
+}
+
+.calendar-modal {
+  position: fixed; /* Position the modal fixed to the viewport */
+  top: 0; /* Align it to the top */
+  left: 0; /* Align it to the left */
+  width: 100%; /* Make it span the full width */
+  height: 100%; /* Make it span the full height */
+  display: flex; /* Use flexbox for centering the content */
+  justify-content: center; /* Center the content horizontally */
+  align-items: center; /* Center the content vertically */
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.calendar-profile-header {
+  display: flex;
+  align-items: center;
+}
+
+.calendar-modal-content {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  width: 50%;
+  max-width: 90%;
+  z-index: 1001;
+}
+
+.react-calendar {
+  border: none;
+  width: 350px;
+  max-width: 100%;
+}
+
+.react-calendar__month-view__weekdays {
+  text-align: center;
+  font-weight: bold;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+  padding: 10px;
+}
+
+.react-calendar__month-view__days__day {
+  padding: 10px;
+  text-align: center;
+}
+
+.react-calendar__tile--active {
+  background: #139a43 !important;
+  color: white;
+}
+
+.react-calendar__tile--now {
+  background: rgb(185, 215, 185);
+}
+
+.time-slot {
+  border: 2px solid #139a43; /* Green border */
+  padding: 10px 20px;
+  margin: 10px 0;
+  text-align: center;
+  font-weight: 500;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.time-slot-active {
+  background-color: #139a43; /* Same as border color */
+  color: white;
+}
+
+.close-calendar {
+  position: absolute;
+  right: 5px; /* Adjust as needed */
+  top: -5px; /* Adjust as needed */
+  font-size: 30px;
+  cursor: pointer;
+}

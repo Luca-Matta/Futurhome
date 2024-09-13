@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import '../../styles/AdCarousel.css';
-import "slick-carousel/slick/slick.css"; 
-import "slick-carousel/slick/slick-theme.css";
 import likeIcon from '../../static/like-icon.png';
 import chatIcon from '../../static/chat-icon.png';
 import bookmarkIcon from '../../static/bookmark-icon.png';
@@ -43,7 +41,7 @@ function AdCarousel() {
         <div className="ad-carousel-content">
           <h2>{ad.title}</h2>
           <div>{shortDescription}</div>
-          <div className="ad-carousel-stats">
+          <div className="ad-carousel-stats hide-on-mobile">
             <div className="ad-carousel-stat">
               <img src={m2Icon} alt="M2" className="ad-carousel-stat-icon" />
               <div><span className="ad-carousel-stat-value">100 </span>m2</div>
@@ -62,6 +60,29 @@ function AdCarousel() {
             <div className="ad-carousel-stat">
               <img src={bathroomsIcon} alt="Bathrooms" className="ad-carousel-stat-icon" />
               <div><span className="ad-carousel-stat-value">2 </span>Bagni</div>
+            </div>
+          </div>
+          <div className="ad-carousel-stats hide-on-desktop">
+            <div className="ad-carousel-stats-group">
+              <div className="ad-carousel-stat">
+                <img src={m2Icon} alt="M2" className="ad-carousel-stat-icon" />
+                <div><span className="ad-carousel-stat-value">100 </span>m2</div>
+              </div>
+              <div className="ad-carousel-stat">
+                <img src={roomsIcon} alt="Rooms" className="ad-carousel-stat-icon" />
+                <div><span className="ad-carousel-stat-value">3 </span>Locali</div>
+              </div>
+            </div>
+            <div>|</div>
+            <div className="ad-carousel-stats-group">
+              <div className="ad-carousel-stat">
+                <img src={floorsIcon} alt="Floors" className="ad-carousel-stat-icon" />
+                <div><span className="ad-carousel-stat-value">3° </span>Piano</div>
+              </div>
+              <div className="ad-carousel-stat">
+                <img src={bathroomsIcon} alt="Bathrooms" className="ad-carousel-stat-icon" />
+                <div><span className="ad-carousel-stat-value">2 </span>Bagni</div>
+              </div>
             </div>
           </div>
           <div className="ad-carousel-buttons">

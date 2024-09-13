@@ -97,3 +97,18 @@
 .login-form .submit-button:hover {
   background-position: left bottom;
 }
+
+@media (max-width: 768px) {
+  .login-form {
+    width: 100%;
+    padding: 20px 40px;
+  }
+  
+  .login-form > .switch-buttons-container > button {
+    padding: 15px 35px;
+  }
+
+  .login-form input {
+    padding: 20px 30px;
+  }
+}

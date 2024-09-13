@@ -1,0 +1,198 @@
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 50px;
+  align-items: center;
+}
+
+.profile-info-section {
+  /* background-color: #139a43; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(185, 215, 185);
+  border-radius: 20px;
+  width: 90%;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.profile-header {
+  display: flex;
+}
+
+.profile-header-left-section {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  padding: 20px 30px;
+}
+
+.agency-profile-picture {
+  height: 120px;
+  width: 120px;
+  border-radius: 15px;
+}
+
+.agency-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  gap: 10px;
+}
+
+.agency-name {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.profile-header-right-section {
+  display: flex;
+  flex: 3;
+  align-items: center;
+}
+
+.agency-insights,
+.calls-to-action {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.agency-insight {
+  font-weight: 700;
+}
+
+.calls-to-action {
+  gap: 7px;
+}
+
+.calls-to-action button {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 20px;
+  font-size: 17px;
+  cursor: pointer;
+  padding: 8px 16px;
+  background-color: #139a43;
+  color: white;
+}
+
+.call-to-action {
+  margin-left: 10px;
+}
+
+.profile-header-vertical-line {
+  border-left: 1px solid #139a43;
+  height: 100px;
+  margin: 0 20px;
+}
+
+.profile-section-separator {
+  height: 5px;
+  width: 100%;
+  background-color: white;
+}
+
+.description-header {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 20px 0px 0px 30px;
+}
+
+.profile-description {
+  background-color: rgb(185, 215, 185);
+  width: 95%;
+  padding: 5px 0px 25px 0px;
+  margin-left: 30px;
+  border-bottom-right-radius: 0.8rem;
+  border-bottom-left-radius: 0.8rem;
+}
+
+.call-to-action-icon {
+  height: 17px;
+}
+
+.agency-ads-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  margin-bottom: 90px;
+}
+
+.agency-ads {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (min-width: 768px) {
+  .profile-header-left-section {
+    padding: 30px 30px;
+  }
+  
+  .profile-header-right-section {
+    justify-content: space-between;
+    padding-right: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-container {
+    padding-top: 20px;
+  }
+
+  .profile-info-section {
+    width: 90%;
+    font-size: 16px;
+  }
+
+  .agency-profile-picture {
+    height: 90px;
+    width: 90px;
+  }
+
+  .agency-name {
+    font-size: 20px;
+  }
+
+  .profile-header {
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+
+  .agency-insights {
+    padding-left: 30px;
+  }
+
+  .profile-header-vertical-line {
+    margin-right: -16px;
+  }
+
+  .calls-to-action {
+    align-items: flex-end;
+    padding-right: 30px;
+  }
+
+  .calls-to-action button {
+    font-size: 15px;
+    padding: 5px 10px;
+  }
+
+  .call-to-action-icon {
+    height: 15px;
+  }
+
+  .description-header {
+    margin: 20px 0px 0px 30px;
+    font-size: 20px;
+  }
+
+  .profile-description {
+    width: 85%;
+  }
+}

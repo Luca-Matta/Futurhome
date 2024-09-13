@@ -1,0 +1,229 @@
+.search-box {
+  position: absolute;
+  /* top: 80%; */
+  top: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 213px;
+  width: 55%;
+  border-radius: 30px;
+  background-color: whitesmoke;
+  z-index: 999;
+}
+
+.saletab {
+  display: flex;
+  margin-top: 30px;
+}
+
+.saletab li {
+  list-style: none;
+}
+
+/* .saletab li a {
+  text-decoration: none;
+  color: black;
+  margin-right: 30px;
+}
+
+.saletab li a.active {
+  border-bottom: 2px solid #139a43;
+  padding-bottom: 4px;
+  font-weight: 700;
+} */
+
+.saletab li a {
+  text-decoration: none;
+  color: black;
+  margin-right: 30px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.saletab li a:hover {
+  /* background-color: rgba(19, 154, 67, 0.5); */
+  background-color: rgba(251, 209, 96, 0.5);
+  color: black;
+}
+
+.saletab li a.active {
+  background-color: #FBD160;
+  color: black;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  margin-top: 20px;
+  height: 90px;
+  border-radius: 30px;
+  background-color: #fff;
+}
+
+.property-type {
+  width: 20%;
+  margin-left: 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.vertical-line {
+  border-left: 2.5px solid rgb(234, 239, 253);;
+  height: 60%;
+  width: 0;
+  display: inline-block;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.search-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.search-input .fa-search {
+  color: #FBD160;
+  font-size: 18px;
+}
+
+.search-bar input[type='text'] {
+  flex-grow: 1;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+
+.search-bar input[type='text']::placeholder {
+  color: #999;
+  font-size: 15px;
+}
+
+.search-bar button {
+  border: none;
+  height: 42px;
+  width: 92px;
+  border-radius: 30px;
+  margin-right: 20px;
+  font-weight: 700;
+  font-size: 15px;
+  background-color: #FBD160;
+  /* color: #fff; */
+  color: black;
+  opacity: 0.5;
+  cursor: pointer;
+  /* background: linear-gradient(90deg, #07bd46 50%, #139a43 50%); */
+  background: linear-gradient(90deg, #FBD160 50%, #F9C846 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.3s ease-out;
+}
+
+.search-bar button:hover {
+  opacity: 1;
+  background-position: left bottom;
+}
+
+.mobile-search-button {
+  border: none;
+  height: 42px;
+  width: 95%;
+  border-radius: 30px;
+  margin-top: 15px;
+  font-weight: 700;
+  font-size: 15px;
+  background-color: #FBD160;
+  /* color: #fff; */
+  color: black;
+  opacity: 0.5;
+  cursor: pointer;
+  /* background: linear-gradient(90deg, #07bd46 50%, #139a43 50%); */
+  background: linear-gradient(90deg, #FBD160 50%, #F9C846 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.3s ease-out;
+}
+
+.mobile-search-button:hover {
+  opacity: 1;
+  background-position: left bottom;
+}
+
+.search-box-footer {
+  font-size: 14px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.search-box-footer-link {
+  text-decoration: none;
+  color: #139a43;
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .hide-on-desktop {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-box {
+    width: 80%; /* Increase the width */
+    top: 25%; /* Adjust the position */
+    height: auto; /* Make the height auto */
+    padding: 20px; /* Add some padding */
+  }
+
+  .hide-on-mobile {
+    display: none;
+  }
+
+  .saletab {
+    margin-top: 15px;
+    padding-left: 0;
+  }
+
+  .saletab li a {
+    margin-right: 10px; /* Remove the margin */
+    margin-bottom: 10px; /* Add some margin to the bottom */
+  }
+
+  .search-bar {
+    flex-direction: column; /* Stack the elements vertically */
+    height: auto; /* Make the height auto */
+    padding: 10px 0; /* Add some padding */
+  }
+
+  .property-type,
+  .search-bar button {
+    width: 100%; /* Increase the width */
+    margin: 10px 0; /* Add some margin */
+  }
+
+  .search-input {
+    width: 90%;
+    margin: 10px 0;
+    padding-left: 10px;
+  }
+
+  .property-type {
+    width: 90%;
+    margin-left: -5px;
+  }
+
+  .vertical-line {
+    display: none; /* Hide the vertical line */
+  }
+}

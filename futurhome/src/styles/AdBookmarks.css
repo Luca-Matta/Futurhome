@@ -1,0 +1,253 @@
+.ad-bookmarks-container {
+  position: fixed;
+  bottom: 0px;
+  right: 0;
+  left: 0;
+  height: 82%;
+  margin: auto;
+  z-index: 1000;
+  border-top-right-radius: 0.8rem;
+  border-top-left-radius: 0.8rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  width: 80%;
+}
+
+.ad-bookmarks {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  width: 1200px;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
+  overflow: hidden;
+}
+
+.ad-bookmarks-header {
+  /* background-color: whitesmoke; */
+  background-color: rgb(185, 215, 185);
+  color: black;
+  height: 48px;
+  padding: 8px 0px;
+  border-top-right-radius: 0.8rem;
+  border-top-left-radius: 0.8rem;
+  margin-bottom: 50px;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.title-container {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.sorting-menu {
+  position: absolute;
+  right: 20px;
+}
+
+.fas.fa-sort {
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.dropdown-menu {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 10px;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  z-index: 1;
+}
+
+.dropdown-menu button {
+  background: none;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  display: block;
+  padding: 5px 20px;
+  text-align: left;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.dropdown-menu button:hover {
+  background-color: #f5f5f5;
+}
+
+.ad-bookmarks-content {
+  display: flex;
+  position: relative;
+}
+
+.ad-bookmarks-pictures {
+  position: relative;
+  height: 265.5px;
+  width: 300px;
+  flex-shrink: 0;
+  margin-right: 10px;
+}
+
+.ad-bookmarks-pictures img {
+  width: 100%;
+  height: 265.5px;
+  object-fit: cover;
+}
+
+.ad-bookmarks-arrow-next {
+  display: block !important;
+  position: absolute !important;
+  right: 10px !important;
+  z-index: 2 !important;
+}
+
+.ad-bookmarks-arrow-prev {
+  display: block !important;
+  position: absolute !important;
+  left: 10px !important;
+  top: 50% !important;
+  z-index: 2 !important;
+}
+
+.slick-dots.custom-dots {
+  position: absolute;
+  top: 220px;
+  right: 0;
+}
+
+.slick-dots.custom-dots li {
+  margin: 0 3px;
+}
+
+.slick-dots.custom-dots li button:before {
+  color: white !important;
+  opacity: 0.8 !important;
+}
+
+.slick-dots.custom-dots li.slick-active button:before {
+  font-size: 12px;
+  opacity: 1 !important;
+}
+
+.pictures-count {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  z-index: 2;
+}
+
+.pictures-count i {
+  margin-right: 5px;
+}
+
+.ad-bookmarks-header-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ad-bookmarks-bookmark-button {
+    border: none;
+    background-color: transparent;
+    color: black;
+    cursor: pointer;
+    font-size: 22px;
+    margin-right: 2px;
+}
+
+.ad-bookmarks-price {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.ad-bookmarks-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 20px 15px 20px;
+}
+
+.ad-bookmarks-street {
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+.ad-bookmarks-location {
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+.ad-bookmarks-description {
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+.ad-bookmarks-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  font-size: 14px;
+  color: black;
+}
+
+.ad-bookmarks-stat {
+  display: flex;
+  font-weight: 500;
+}
+
+.ad-bookmarks-stat:first-child {
+  padding-left: 44px;
+}
+
+.ad-bookmarks-stat:last-child {
+  padding-right: 44px;
+}
+
+.ad-bookmarks-stat-value {
+  font-weight: 700;
+  margin-left: 5px;
+}
+
+.ad-bookmarks-buttons {
+  display: flex;
+  width: 450px;
+  margin: auto;
+  margin: 20px auto 0 auto;
+  justify-content: space-between;
+  /* background-color: rgb(185, 215, 185); */
+  /* background-color: #ececec; */
+  /* background-color: rgb(205, 223, 205); */
+  background-color: #139a43;
+  border-radius: 10px;
+  padding: 8px 70px;
+}
+
+.ad-bookmarks-buttons button {
+  border: none;
+  background-color: transparent;
+  /* color: black; */
+  color: white;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.ad-bookmarks-buttons button i {
+  margin-right: 5px;
+}
+
+.interaction-count {
+  font-size: 16px;
+  margin-left: 4px;
+}

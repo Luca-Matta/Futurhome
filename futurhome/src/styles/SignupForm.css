@@ -153,7 +153,6 @@
 .signup-form input {
   display: block;
   width: 100%;
-  padding: 20px 70px;
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 20px;
@@ -193,4 +192,26 @@
 
 .signup-form .submit-button:hover {
   background-position: left bottom;
+}
+
+@media (min-width: 769px) {
+  .signup-form input {
+    padding: 20px 70px;
+  }
+}
+
+@media (max-width: 768px) {
+  .signup-form {
+    width: 100%;
+    padding: 20px 40px;
+  }
+  
+  .signup-form > .switch-buttons-container > button {
+    padding: 15px 35px;
+  }
+
+  .signup-form input,
+  .signup-form .custom-select {
+    padding: 20px 30px;
+  }
 }

@@ -1,0 +1,20 @@
+/* .ad-carousels-section {
+  display: flex;
+  justify-content: space-between;
+} */
+
+body {
+  overflow-x: hidden;
+}
+
+.ad-carousels-section {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  animation: scroll 30s ease-out infinite;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-250%); }
+}

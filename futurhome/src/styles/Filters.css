@@ -1,0 +1,83 @@
+.filters-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0px;
+  box-sizing: border-box;
+}
+
+.filters {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  padding: 20px;
+  box-sizing: border-box;
+  max-width: 85%;
+  overflow-x: auto;
+}
+
+.filter {
+  padding: 12px 15px;
+  background-color: rgb(185, 215, 185);
+  font-weight: 500;
+  border-radius: 12px;
+  font-size: 14px;
+  margin-right: 12px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.active-filter {
+  background-color: #FBD160;
+}
+
+.filters::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-arrow-prev, .filter-arrow-next {
+  position: absolute;
+  top: 50%;
+  width: 30px;
+  height: 30px;
+  border: 2px solid rgb(147, 173, 147);
+  border-radius: 50%;
+  color: rgb(147, 173, 147);
+  text-align: center;
+  transform: translateY(-50%);
+  background-color: transparent; 
+  box-shadow: 0 0 10px rgba(0, 128, 0, 0.5);
+  cursor: pointer;
+}
+
+.filter-arrow-prev {
+  left: -30px;
+}
+
+.filter-arrow-next {
+  right: -30px;
+}
+
+.filter-arrow-prev::before, .filter-arrow-next::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+}
+
+.filter-arrow-prev::before {
+  content: "\2190";
+}
+
+.filter-arrow-next::before {
+  content: "\2192";
+}
+
+@media (max-width: 600px) {
+  .filters-container {
+    max-width: 70%;
+  }
+}
