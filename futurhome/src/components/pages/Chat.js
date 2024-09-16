@@ -33,7 +33,8 @@ const chats = [
 ];
 
 function ChatPage({ selectedChatId }) {
-  const selectedChat = chats.find(chat => chat.id === selectedChatId);
+  const [mobileSelectedChatId, setMobileSelectedChatId] = useState(null);
+  const selectedChat = chats.find(chat => chat.id === selectedChatId || chat.id === mobileSelectedChatId);
   const messages = selectedChat?.messages || [];
   const [messageText, setMessageText] = useState('');
 
@@ -43,19 +44,98 @@ function ChatPage({ selectedChatId }) {
     setMessageText('');
   };
 
+  const handleChatSelect = (chatId) => {
+    setMobileSelectedChatId(chatId);
+  };
+
+  const handleBack = () => {
+    setMobileSelectedChatId(null);
+  };
+
   return (
     <div className="chat-page-container">
-      <div className="chat-page-list">
-        {chats.map((chat) => (
-          <div key={chat.id} className="chat-list-item">
-            <img src={chat.profilePicture} alt="Profile" className="chat-profile-picture" />
-            <h2>{chat.name}</h2>
-            <p>{chat.lastMessage}</p>
+
+      <div className="chat-page-list-desktop hide-on-mobile">
+        <div className="chat-page-list-desktop-header">
+          <h3>Chat</h3>
+          {mobileSelectedChatId && (
+            <button onClick={handleBack}>Back</button>
+          )}
+        </div>
+        {!mobileSelectedChatId && chats.map((chat) => (
+          <div key={chat.id} className="chat-page-list-desktop-item">
+            <div>
+              <img src={chat.profilePicture} alt="Profile" className="chat-profile-picture" />
+            </div>
+            <div className="right-section">
+              <div className="chat-page-list-desktop-message-name">{chat.name}</div>
+              <div className="chat-page-list-desktop-message-text">{chat.lastMessage}</div>
+            </div>
           </div>
         ))}
       </div>
-      <div className="chat-page">
+
+      <div className="chat-page hide-on-mobile">
         <div className="chat-page-header">
+          <div className="chatpage-profile-picture-container">
+            <img src={selectedChat?.profilePicture} alt="Profile" className="chatpage-profile-picture" />
+            <div className="chatpage-online-status"></div>
+          </div>
+          <h3>{selectedChat?.name} //ADD EMBED POST CODE</h3>
+        </div>
+        <div className="chat-page-content">
+          {messages.map((message, index) => (
+            <div key={index} className={`message ${message.isMine ? 'current-user' : ''}`}>
+              <div className="chat-message-header">
+                <div>
+                  <img src={message.isMine ? currentUser.profilePicture : selectedChat.profilePicture} alt="Profile" className="message-profile-picture" />
+                </div>
+                <div>
+                  <span className='chat-message-name'>{message.isMine ? currentUser.name : selectedChat.name}</span>
+                  <span className='chat-message-dot'> · </span>
+                  <span className="chat-message-timestamp">10:30 AM</span>
+                  <div className='chat-message-text'>{message.text}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <form className="chat-page-message-form" onSubmit={handleSendMessage}>
+          <input
+            className="message-input"
+            type="text"
+            value={messageText}
+            onChange={(e) => setMessageText(e.target.value)}
+            placeholder="Scrivi un messaggio..."
+          />
+          <button className="send-message-button" type="submit">
+            Invia
+          </button>
+        </form>
+      </div>
+
+      <div className={`chat-page-list-mobile hide-on-desktop ${mobileSelectedChatId ? 'hide-on-mobile' : ''}`}>
+        <div className="chat-page-list-mobile-header">
+          <h3>Chat</h3>
+        </div>
+        {chats.map((chat) => (
+          <div key={chat.id} className="chat-page-list-mobile-item" onClick={() => handleChatSelect(chat.id)}>
+            <div>
+              <img src={chat.profilePicture} alt="Profile" className="chat-profile-picture" />
+            </div>
+            <div className="right-section">
+              <div className="chat-page-list-mobile-message-name">{chat.name}</div>
+              <div className="chat-page-list-mobile-message-text">{chat.lastMessage}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className={`chat-page-mobile hide-on-desktop ${mobileSelectedChatId ? '' : 'hide-on-mobile'}`}>
+        <div className="chat-page-header">
+          <button onClick={handleBack} className="chat-page-back-button">
+            <i className="fas fa-arrow-left chat-page-back-arrow"></i>
+          </button>
           <div className="chatpage-profile-picture-container">
             <img src={selectedChat?.profilePicture} alt="Profile" className="chatpage-profile-picture" />
             <div className="chatpage-online-status"></div>

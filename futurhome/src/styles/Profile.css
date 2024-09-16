@@ -121,7 +121,7 @@
   flex-direction: column;
   align-items: center;
   padding: 20px 0;
-  margin-bottom: 90px;
+  margin-bottom: 50px;
 }
 
 .agency-ads {
@@ -194,5 +194,9 @@
 
   .profile-description {
     width: 85%;
+  }
+
+  .agency-ads-section {
+    margin-bottom: 30px;
   }
 }

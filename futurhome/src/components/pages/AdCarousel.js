@@ -39,8 +39,8 @@ function AdCarousel() {
           ))}
         </div>
         <div className="ad-carousel-content">
-          <h2>{ad.title}</h2>
-          <div>{shortDescription}</div>
+          <h2 className="ad-carousel-title">{ad.title}</h2>
+          <div className="ad-carousel-description">{shortDescription}</div>
           <div className="ad-carousel-stats hide-on-mobile">
             <div className="ad-carousel-stat">
               <img src={m2Icon} alt="M2" className="ad-carousel-stat-icon" />
@@ -103,8 +103,12 @@ function AdCarousel() {
               <img src={phoneIcon} alt="Like" className="ad-carousel-button-icon" />
               {/* <span className="interaction-count">70</span> */}
             </button>
+            <button>
               <img src={shareIcon} alt="Like" className="ad-carousel-button-icon" />
+            </button>
+            <button>
               <img src={calendarIcon} alt="Like" className="ad-carousel-button-icon" />
+            </button>
           </div>
         </div>
       </div>

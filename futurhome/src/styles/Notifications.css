@@ -17,7 +17,7 @@
   width: 60%;
   height: calc(100vh - 50px);
   margin-top: 20px;
-  margin-bottom: 60px;
+  /* margin-bottom: 60px; */
   margin-right: auto;
   margin-left: auto;
   background-color: white;
@@ -29,6 +29,8 @@
 
 .notifications-header {
   /* background-color: whitesmoke; */
+  position: sticky;
+  top: 0;
   background-color: rgb(185, 215, 185);
   color: black;
   height: 48px;
@@ -94,7 +96,6 @@
 .notifications-content {
   padding: 0 15px;
   margin-top: 10px;
-  height: calc(100% - 58px);
   overflow: auto;
 }
 
@@ -187,6 +188,7 @@
     height: calc(100vh - 195px);
     border-bottom-right-radius: 0.8rem;
     border-bottom-left-radius: 0.8rem;
+    margin-bottom: 25px;
   }
 
   .notification {

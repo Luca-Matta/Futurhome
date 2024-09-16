@@ -14,6 +14,7 @@
 
 .logo-home {
   height: 200px;
+  margin: auto;
 }
 
 .logo-section-subtitle {
@@ -75,5 +76,11 @@
 
   .ad-carousel-section-title {
     font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-section-subtitle {
+    font-size: 16px;
   }
 }

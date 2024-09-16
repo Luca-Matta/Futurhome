@@ -215,3 +215,15 @@
     padding: 20px 30px;
   }
 }
+
+@media (max-width: 360px) {
+  .signup-form {
+    width: 90%;
+    padding: 20px 15px;
+  }
+  
+  .signup-form > .switch-buttons-container > button {
+    padding: 14px 30px;
+    font-size: 14px;
+  }
+}

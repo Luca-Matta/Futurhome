@@ -17,6 +17,7 @@
 .switch-buttons-container {
   margin-top: 10px;
   margin-bottom: 30px;
+  flex-wrap: nowrap;
 }
 
 .login-form > .switch-buttons-container > button {
@@ -103,12 +104,24 @@
     width: 100%;
     padding: 20px 40px;
   }
-  
+
   .login-form > .switch-buttons-container > button {
     padding: 15px 35px;
   }
 
   .login-form input {
     padding: 20px 30px;
+  }
+}
+
+@media (max-width: 360px) {
+  .login-form {
+    width: 90%;
+    padding: 20px 22px;
+  }
+
+  .login-form > .switch-buttons-container > button {
+    padding: 14px 23px;
+    font-size: 14px;
   }
 }

@@ -76,7 +76,7 @@
   content: "\2192";
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .filters-container {
     max-width: 70%;
   }

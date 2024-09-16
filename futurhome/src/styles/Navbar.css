@@ -51,7 +51,6 @@
 .navbar-user {
   display: flex;
   align-items: center;
-  padding-right: 20px;
 }
 
 .navbar-profile-picture {
@@ -59,7 +58,6 @@
   height: 40px;
   border-radius: 50%;
   border: 1px solid white;
-  margin-left: 15px;
 }
 
 .login-link {
@@ -80,6 +78,15 @@
   text-decoration: none;
 }
 
+.navbar-login-icon {
+  margin-right: 40px;
+}
+
+.navbar-login-link-mobile {
+  font-size: 16px;
+  color: white;
+}
+
 .publish-link {
   background-color: #FBD160;
   color: black;
@@ -90,16 +97,6 @@
   text-decoration: none;
   text-wrap: nowrap;
   margin-right: 10px;
-}
-
-@media (min-width: 768px) {
-  .navbar {
-    padding: 0 180px;
-  }
-
-  .navbar-user {
-    padding-right: 350px;
-  }
 }
 
 .hamburger-menu {
@@ -142,6 +139,16 @@
   list-style: none;
 }
 
+@media (min-width: 768px) {
+  .navbar {
+    padding-left: 180px;
+  }
+
+  .navbar-user {
+    margin-right: 230px;
+  }
+}
+
 @media (max-width: 768px) {
   .navbar-links-mobile {
     display: flex;
@@ -169,5 +176,29 @@
 
   .navbar-small-logo {
     display: block;
+  }
+
+  .navbar-user {
+    margin-right: 40px;
+  }
+
+  .navbar-profile-picture {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    max-width: 100vw;
+    padding: 0px;
+  }
+
+  .hamburger-menu {
+    margin-left: 20px;
+  }
+
+  .navbar-login-icon {
+    margin-right: 25px;
   }
 }

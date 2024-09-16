@@ -126,3 +126,12 @@
   border-radius: 5px;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .chat-modal {
+    bottom: 15px;
+    right: 10px;
+    width: 80%;
+    height: 60%;
+  }
+}

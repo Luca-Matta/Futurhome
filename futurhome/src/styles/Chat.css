@@ -119,14 +119,23 @@
 
 @media (max-width: 768px) {
   .chat-container {
-    bottom: 90px;
+    bottom: 0px;
     right: 15px;
     border-radius: 50%;
     align-items: center;
     justify-content: center;
   }
 
+  .chat-box {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+  }
+
   .chat-open-button {
+    position: absolute;
+    bottom: 20px;
+    right: 0px;
     width: 48px;
     height: 48px;
     border-radius: 50%;

@@ -36,10 +36,21 @@ function Navbar({ openLogin, openSignup }) {
         <li><NavLink to="/profile" activeClassName="active">Profilo</NavLink></li>
       </ul>
         <a href="#" className="publish-link">Pubblica annuncio</a>
-      <div className="navbar-user">
+      <div className="navbar-user hide-on-mobile">
         <a href="#" className="login-link" onClick={(e) => {e.preventDefault(); openLogin();}}>Accedi</a>
         <a href="#" className="signup-link" onClick={(e) => {e.preventDefault(); openSignup();}}>Registrati</a>
       </div>
+      {/* <div className="navbar-user hide-on-mobile">
+        <img src={userProfilePicture} alt="Profile" className="navbar-profile-picture" />
+      </div> */}
+      <div className="navbar-login-icon hide-on-desktop">
+        <a href="#" className="navbar-login-link-mobile" onClick={(e) => {e.preventDefault(); openLogin();}}>
+          <i className="fas fa-user"></i>
+        </a>
+      </div>
+      {/* <div className="navbar-user hide-on-desktop">
+        <img src={userProfilePicture} alt="Profile" className="navbar-profile-picture" />
+      </div> */}
     </div>
   );
 }

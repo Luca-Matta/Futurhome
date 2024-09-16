@@ -212,7 +212,7 @@
 }
 
 @media (max-width: 600px) {
-  .ad {
+  .single-ad {
     max-width: 400px;
   }
 }

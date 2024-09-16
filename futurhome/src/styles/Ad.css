@@ -183,9 +183,10 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 360px) and (max-width: 768px) {
   .ad {
-    width: 95%;
+    width: 100%;
+    max-width: 400px;
     margin: 20px auto;
   }
 
@@ -199,7 +200,8 @@
   }
 
   .ad-pictures img {
-    height: auto;
+    /* height: auto; */
+    height: 252px;
   }
 
   .ad-price {
@@ -241,5 +243,29 @@
 
   .interaction-count {
     font-size: 16px;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 480px) {
+  .ad {
+    width: 95%;
+    max-width: 370px;
+    margin: 20px auto;
+  }
+
+  .ad-buttons button {
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .ad {
+    width: 95%;
+    max-width: 360px;
+    margin: 20px auto;
+  }
+
+  .ad-buttons button {
+    padding: 0 10px;
   }
 }
