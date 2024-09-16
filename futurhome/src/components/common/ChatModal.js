@@ -38,22 +38,24 @@ function ChatModal({ isOpen, onClose, children, selectedChat, messages = [] }) {
         </div>
       )}
       <div className="chat-modal-content">
-        {messages.map((message, index) => (
-          <div key={index} className={`chat-message ${message.isMine ? 'mine' : ''}`}>
-            <div className="message-header">
-              <div>
-                <img src={message.isMine ? currentUser.profilePicture : selectedChat.profilePicture} alt="Profile" className="message-profile-picture" />
-              </div>
-              <div>
-                <span className='message-name'>{message.isMine ? currentUser.name : selectedChat.name}</span>
-                <span className='message-dot'> · </span>
-                <span className="message-timestamp">10:30 AM</span>
-                <div className='message-text'>{message.text}</div>
+        <div className="chat-modal-messages">
+          {messages.map((message, index) => (
+            <div key={index} className={`chat-message ${message.isMine ? 'mine' : ''}`}>
+              <div className="message-header">
+                <div>
+                  <img src={message.isMine ? currentUser.profilePicture : selectedChat.profilePicture} alt="Profile" className="message-profile-picture" />
+                </div>
+                <div>
+                  <span className='message-name'>{message.isMine ? currentUser.name : selectedChat.name}</span>
+                  <span className='message-dot'> · </span>
+                  <span className="message-timestamp">10:30 AM</span>
+                  <div className='message-text'>{message.text}</div>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-        {children}
+          ))}
+          {children}
+        </div>
         <form onSubmit={handleSendMessage} className="message-form">
           <input
             type="text"
