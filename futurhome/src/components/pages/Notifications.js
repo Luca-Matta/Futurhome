@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../../styles/Notifications.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCommentDots } from '@fortawesome/free-solid-svg-icons';
-import CurvedRightArrow from '../../static/curved-right-arrow.png';
+import CurvedRightArrow from '../../static/icons/curved-right-arrow.svg';
 import PietroProfilePicture from '../../static/pietro.png';
 import EnnioProfilePicture from '../../static/ennio.png';
 

@@ -1,12 +1,12 @@
 .search-box {
   position: absolute;
   /* top: 80%; */
-  top: 45%;
+  top: 38%;
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 213px;
-  width: 55%;
+  width: 73%;
   border-radius: 30px;
   background-color: whitesmoke;
   z-index: 999;
@@ -64,7 +64,7 @@
   background-color: #fff;
 }
 
-.property-type {
+/* .property-type {
   width: 20%;
   margin-left: 10px;
   border: none;
@@ -73,6 +73,38 @@
   padding: 10px;
   cursor: pointer;
   font-weight: 700;
+} */
+
+.dropdown {
+  position: relative;
+  width: 200px;
+}
+
+.dropdown-header {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown-list {
+  position: absolute;
+  background-color: #fff;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  width: 100%;
+  border-top: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  z-index: 10000;
+}
+
+.dropdown-list-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown-list-item:hover {
+  background-color: #f1f1f1;
 }
 
 .vertical-line {
@@ -178,12 +210,22 @@
   }
 }
 
+@media (min-width: 768px) and (max-width: 1040px) {
+  .hide-md {
+    display: none;
+  }
+
+  .saletab li a {
+    margin-right: 20px;
+  }
+}
+
 @media (max-width: 768px) {
   .search-box {
-    width: 80%; /* Increase the width */
-    top: 25%; /* Adjust the position */
-    height: auto; /* Make the height auto */
-    padding: 20px; /* Add some padding */
+    width: 80%;
+    top: 25%;
+    height: auto;
+    padding: 20px;
   }
 
   .hide-on-mobile {
@@ -196,20 +238,20 @@
   }
 
   .saletab li a {
-    margin-right: 10px; /* Remove the margin */
-    margin-bottom: 10px; /* Add some margin to the bottom */
+    margin-right: 10px;
+    margin-bottom: 10px;
   }
 
   .search-bar {
-    flex-direction: column; /* Stack the elements vertically */
-    height: auto; /* Make the height auto */
-    padding: 10px 0; /* Add some padding */
+    flex-direction: column;
+    height: auto;
+    padding: 10px 0;
   }
 
   .property-type,
   .search-bar button {
-    width: 100%; /* Increase the width */
-    margin: 10px 0; /* Add some margin */
+    width: 100%;
+    margin: 10px 0;
   }
 
   .search-input {
@@ -218,12 +260,16 @@
     padding-left: 10px;
   }
 
+  .dropdown {
+    width: 100%;
+  }
+
   .property-type {
     width: 90%;
     margin-left: -5px;
   }
 
   .vertical-line {
-    display: none; /* Hide the vertical line */
+    display: none;
   }
 }

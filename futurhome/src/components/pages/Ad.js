@@ -4,16 +4,16 @@ import Slider from "react-slick";
 import CalendarModal from '../common/CalendarModal';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-import likeIcon from '../../static/like-icon.png';
-import chatIcon from '../../static/chat-icon.png';
-import bookmarkIcon from '../../static/bookmark-icon.png';
-import phoneIcon from '../../static/phone-icon.png';
-import shareIcon from '../../static/share-icon.png';
-import calendarIcon from '../../static/calendar-icon.png';
-import m2Icon from '../../static/m2-icon.png';
-import roomsIcon from '../../static/rooms-icon.png';
-import floorsIcon from '../../static/floors-icon.png';
-import bathroomsIcon from '../../static/bathrooms-icon.png';
+import likeIcon from '../../static/icons/like.svg';
+import chatIcon from '../../static/icons/chat.svg';
+import bookmarkIcon from '../../static/icons/bookmark.svg';
+import phoneIcon from '../../static/icons/phone.svg';
+import shareIcon from '../../static/icons/share.svg';
+import calendarIcon from '../../static/icons/calendar.svg';
+import m2Icon from '../../static/icons/m2.svg';
+import roomsIcon from '../../static/icons/rooms.svg';
+import floorsIcon from '../../static/icons/floors.svg';
+import bathroomsIcon from '../../static/icons/bathroom.svg';
 import adPicture1 from '../../static/ad-picture1.jpeg';
 import adPicture2 from '../../static/ad-picture2.jpeg';
 import adPicture3 from '../../static/ad-picture3.jpeg';
@@ -25,7 +25,7 @@ function Ad() {
   const totalPictures = pictures.length;
 
   const description = "SAN PAOLO - VIA GASPARE GOZZI In Via Gaspare Gozzi adiacente Via Laurentina nel quadrante tra la metro B 'Marconi' e la metro B 'San Paolo', entrambe raggiungibili a piedi, cosi come l'Università Roma Tre, proponiamo la vendita di un ampio trilocale con doppi servizi di cui uno finestrato. Completa la proprietà un box auto con serranda elettrica di 15 mq soppalcato raggiungiile direttamente con l'ascensore condominiale";
-  const maxLength = 230;
+  const maxLength = window.innerWidth <= 1200 ? 143 : 290;
 
   const shortDescription = description.length > maxLength 
     ? description.substring(0, maxLength) + "..." 
@@ -103,7 +103,7 @@ function Ad() {
             <div className="ad-buttons">
               <button>
                 <img src={likeIcon} alt="Like" className="ad-buttons-icon" />
-                <span className="interaction-count  hide-on-mobile">
+                <span className="interaction-count hide-on-mobile">
                   450
                 </span>
               </button>

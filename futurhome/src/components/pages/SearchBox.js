@@ -10,6 +10,16 @@ function SearchBox () {
     setActiveLink(e.target.textContent);
   }
 
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState('Case | Qualsiasi');
+
+  const options = [
+    'Case | Qualsiasi',
+    'Appartamenti',
+    'Ville',
+    'Ville a schiera'
+  ];
+
   return (
     <div className='search-box'>
       <ul className='saletab'>
@@ -28,7 +38,7 @@ function SearchBox () {
             Vendi
           </a>
         </li>
-        <li className="hide-on-mobile">
+        <li className="hide-on-mobile hide-md">
           <a href="" className={activeLink === 'Valuta' ? 'active' : ''} onClick={handleClick}>
             Valuta
           </a>
@@ -43,19 +53,34 @@ function SearchBox () {
             Agenzie
           </a>
         </li>
-        <li className="hide-on-mobile">
+        <li className="hide-on-mobile hide-md">
           <a href="" className={activeLink === 'Quotazioni' ? 'active' : ''} onClick={handleClick}>
             Quotazioni
           </a>
         </li>
       </ul>
       <div className='search-bar'>
-        <select className='property-type'>
-          <option value=''>Case | Qualsiasi</option>
-          <option value='appartamenti'>Appartamenti</option>
-          <option value='ville'>Ville</option>
-          <option value='ville-a-schiera'>Ville a schiera</option>
-        </select>
+      <div className="dropdown">
+      <div className="dropdown-header" onClick={() => setIsOpen(!isOpen)}>
+        {selectedOption}
+      </div>
+      {isOpen && (
+        <ul className="dropdown-list">
+          {options.filter(option => option !== selectedOption).map((option, index) => (
+            <li 
+              key={index} 
+              className="dropdown-list-item"
+              onClick={() => {
+                setSelectedOption(option);
+                setIsOpen(false);
+              }}
+            >
+              {option}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
         <div className="vertical-line"></div>
         <div className='search-input'>
           <FaSearch className='fa-search' />

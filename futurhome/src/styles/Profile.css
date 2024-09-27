@@ -200,3 +200,9 @@
     margin-bottom: 30px;
   }
 }
+
+@media (max-width: 415px) {
+  .profile-header-vertical-line {
+    margin-right: 2 0px;
+  }
+}

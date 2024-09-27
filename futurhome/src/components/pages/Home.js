@@ -3,7 +3,7 @@ import '../../styles/Home.css';
 import SearchBox from './SearchBox';
 import Partner from './Partner';
 import AdBanner from './AdBanner';
-import logo from '../../static/logo.png';
+import logo from '../../static/icons/logo.svg';
 import DiscoverMoreBanner from './DiscoverMoreBanner';
 import AdCarouselsSection from './AdCarouselsSection';
 

@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import '../../styles/AdCarousel.css';
-import likeIcon from '../../static/like-icon.png';
-import chatIcon from '../../static/chat-icon.png';
-import bookmarkIcon from '../../static/bookmark-icon.png';
-import phoneIcon from '../../static/phone-icon.png';
-import shareIcon from '../../static/share-icon.png';
-import calendarIcon from '../../static/calendar-icon.png';
-import m2Icon from '../../static/m2-icon.png';
-import roomsIcon from '../../static/rooms-icon.png';
-import floorsIcon from '../../static/floors-icon.png';
-import bathroomsIcon from '../../static/bathrooms-icon.png';
+import likeIcon from '../../static/icons/like.svg';
+import yellowLikeIcon from '../../static/icons/yellow-like.svg';
+import chatIcon from '../../static/icons/chat.svg';
+import yellowBookmarkIcon from '../../static/icons/yellow-bookmark.svg';
+import bookmarkIcon from '../../static/icons/bookmark.svg';
+import phoneIcon from '../../static/icons/phone.svg';
+import shareIcon from '../../static/icons/share.svg';
+import calendarIcon from '../../static/icons/calendar.svg';
+import m2Icon from '../../static/icons/m2.svg';
+import roomsIcon from '../../static/icons/rooms.svg';
+import floorsIcon from '../../static/icons/floors.svg';
+import bathroomsIcon from '../../static/icons/bathroom.svg';
 import adPicture1 from '../../static/ad-picture1.jpeg';
 import adPicture2 from '../../static/ad-picture2.jpeg';
 import adPicture3 from '../../static/ad-picture3.jpeg';
@@ -26,7 +28,7 @@ function AdCarousel() {
   const [currentPicture, setCurrentPicture] = useState(0);
 
   const description = ad.description
-  const maxLength = 147;
+  const maxLength = window.innerWidth <= 1250 ? 100 : 147;
   const shortDescription = description.length > maxLength ? description.substring(0, maxLength) + "..." : description;
 
   return (
@@ -87,7 +89,7 @@ function AdCarousel() {
           </div>
           <div className="ad-carousel-buttons">
             <button>
-              <img src={likeIcon} alt="Like" className="ad-carousel-button-icon" />
+              <img src={yellowLikeIcon} alt="Like" className="ad-carousel-button-icon" />
               {/* <i className="fas fa-heart"></i> */}
               {/* <span className="interaction-count">450</span> */}
             </button>
@@ -96,7 +98,7 @@ function AdCarousel() {
               {/* <span className="interaction-count">35</span> */}
             </button>
             <button>
-              <img src={bookmarkIcon} alt="Like" className="ad-carousel-button-icon" />
+              <img src={yellowBookmarkIcon} alt="Like" className="ad-carousel-button-icon" />
               {/* <span className="interaction-count">70</span> */}
             </button>
             <button>

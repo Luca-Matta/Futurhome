@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import '../../styles/Profile.css';
 import Ad from './Ad';
-import ChatIcon from '../../static/chat-icon.png';
-import PhoneIcon from '../../static/phone-icon.png';
-import CalendarIcon from '../../static/calendar-icon.png';
-import logoutIcon from '../../static/logout-icon.png';
+import chatIcon from '../../static/icons/chat.svg';
+import phoneIcon from '../../static/icons/phone.svg';
+import calendarIcon from '../../static/icons/calendar.svg';
+import logoutIcon from '../../static/icons/logout.svg';
 import PietroRanteProfilePicture from '../../static/pietro.png';
 
 const user = {
@@ -64,7 +64,7 @@ function Profile() {
               <div className="calls-to-action">
                 <div className="hide-on-mobile">
                   <button>
-                    <img src={ChatIcon} alt="Like" className="call-to-action-icon" />
+                    <img src={chatIcon} alt="Like" className="call-to-action-icon" />
                     <span className="call-to-action">
                       Chatta con Futurhome
                     </span>
@@ -72,7 +72,7 @@ function Profile() {
                 </div>
                 <div className="hide-on-desktop">
                   <button>
-                    <img src={ChatIcon} alt="Like" className="call-to-action-icon" />
+                    <img src={chatIcon} alt="Like" className="call-to-action-icon" />
                     <span className="call-to-action">
                       Messaggio
                     </span>
@@ -80,7 +80,7 @@ function Profile() {
                 </div>
                 <div>
                   <button onClick={() => setIsModalOpen(true)}>
-                    <img src={CalendarIcon} alt="Like" className="call-to-action-icon" />
+                    <img src={calendarIcon} alt="Like" className="call-to-action-icon" />
                     <span className="call-to-action hide-on-mobile">
                       Prenota visita
                     </span>
@@ -91,7 +91,7 @@ function Profile() {
                 </div>
                 <div>
                   <button>
-                    <img src={PhoneIcon} alt="Like" className="call-to-action-icon" />
+                    <img src={phoneIcon} alt="Like" className="call-to-action-icon" />
                     <span className="call-to-action">
                       Contatta
                     </span>

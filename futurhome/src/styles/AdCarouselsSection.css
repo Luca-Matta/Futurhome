@@ -11,10 +11,10 @@ body {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  animation: scroll 30s ease-out infinite;
+  animation: scroll 25s linear infinite;
 }
 
 @keyframes scroll {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-250%); }
+  100% { transform: translateX(-101%); }
 }

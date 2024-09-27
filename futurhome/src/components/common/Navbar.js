@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import '../../styles/Navbar.css';
 // import smallLogo from '../../static/small-logo.png';
-import logo from '../../static/logo.png';
+import logo from '../../static/icons/logo.svg';
 import userProfilePicture from '../../static/image00013.jpeg';
 
 function Navbar({ openLogin, openSignup }) {

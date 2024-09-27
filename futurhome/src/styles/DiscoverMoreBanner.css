@@ -4,9 +4,9 @@
   align-items: center;
   padding: 7px 20px;
   /* margin-top: 55px; */
-  margin-top: 210px;
+  margin-top: 160px;
   height: 74px;
-  width: 53%;
+  width: 71%;
   border-radius: 20px;
   /* background-color: #139a43; */
   background-color: #FBD160;
@@ -37,7 +37,7 @@
 
 @media (max-width: 768px) {
   .discover-more-banner {
-    margin-top: 260px;
+    margin-top: 210px;
     width: 80%;
   }
 }
