@@ -313,3 +313,46 @@
     padding: 0 10px;
   }
 }
+
+@media (min-width: 550px) and (max-width: 768px) {
+  .ad {
+    width: 100%;
+    max-width: 530px;
+    height: auto;
+    margin: 20px auto;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1034px) {
+  .ad {
+    width: 100%;
+    max-width: 755px;
+    height: auto;
+    margin: 20px auto;
+  }
+
+  .interaction-count {
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .interaction-count {
+    display: block;
+  }
+}
+
+@media (max-width: 550px) {
+  .ad-buttons button {
+    padding-right: 7px;
+    padding-left: 7px;
+  }
+
+  .ad-buttons-icon {
+    height: 16px;
+  }
+
+  .interaction-count {
+    font-size: 14px;
+  }
+}

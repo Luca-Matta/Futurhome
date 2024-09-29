@@ -11,7 +11,7 @@ function capitalizeFirstLetter(string) {
 
 function CalendarModal({ isOpen, onClose, profile }) {
   const [value, onChange] = useState(new Date());
-  const [selectedDay, setSelectedDay] = useState(new Date()); // Initialize with the current date
+  const [selectedDay, setSelectedDay] = useState(new Date());
 
   const handleDayClick = (value) => {
     onChange(value);
@@ -21,6 +21,28 @@ function CalendarModal({ isOpen, onClose, profile }) {
   const timeSlots = ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'];
 
   const [activeTimeSlot, setActiveTimeSlot] = useState(null);
+  const [isTimeSlotSelected, setIsTimeSlotSelected] = useState(false);
+  const [isTimeSlotConfirmed, setIsTimeSlotConfirmed] = useState(false);
+
+  const handleTimeSlotClick = (timeSlot) => {
+    setActiveTimeSlot(timeSlot);
+    setIsTimeSlotSelected(true);
+  };
+
+  const handleCancel = () => {
+    setActiveTimeSlot(null);
+    setIsTimeSlotSelected(false);
+  };
+
+  const handleConfirm = () => {
+    setIsTimeSlotConfirmed(true);
+  };
+
+  const handleBack = () => {
+    setIsTimeSlotConfirmed(false);
+  };
+
+
 
   return (
     <>
@@ -48,15 +70,35 @@ function CalendarModal({ isOpen, onClose, profile }) {
               </div>
               <div className="selected-day-section">
                 <h5>{selectedDay.toLocaleDateString()}</h5>
-                {timeSlots.map((timeSlot, index) => (
-                  <div 
-                    key={index} 
-                    className={`time-slot ${timeSlot === activeTimeSlot ? 'time-slot-active' : ''}`}
-                    onClick={() => setActiveTimeSlot(timeSlot)}
-                  >
-                    {timeSlot}
-                  </div>
-                ))}
+                {!isTimeSlotSelected ? (
+                  timeSlots.map((timeSlot, index) => (
+                    <div 
+                      key={index} 
+                      className={`time-slot ${timeSlot === activeTimeSlot ? 'time-slot-active' : ''}`}
+                      onClick={() => handleTimeSlotClick(timeSlot)}
+                    >
+                      {timeSlot}
+                    </div>
+                  ))
+                ) : !isTimeSlotConfirmed ? (
+                  <>
+                    <div className="time-slot time-slot-active">{activeTimeSlot}</div>
+                    <div className='time-slots-buttons'>
+                      <button onClick={handleCancel} className='cancel-button'>Annulla</button>
+                      <button onClick={handleConfirm} className='confirm-button'>Conferma</button>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <input type="text" placeholder="Nome" className='calendar-input' />
+                    <input type="text" placeholder="Cellulare" className='calendar-input' />
+                    <input type="text" placeholder="Email" className='calendar-input' />
+                    <div className='time-slots-buttons'>
+                      <button onClick={handleBack} className='cancel-button'>Indietro</button>
+                      <button className='confirm-button'>Conferma</button>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </div>

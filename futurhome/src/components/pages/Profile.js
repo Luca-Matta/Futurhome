@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../../styles/Profile.css';
 import Ad from './Ad';
+import Banner from '../common/Banner';
 import chatIcon from '../../static/icons/chat.svg';
 import phoneIcon from '../../static/icons/phone.svg';
 import calendarIcon from '../../static/icons/calendar.svg';
@@ -107,6 +108,7 @@ function Profile() {
           </div>
         </div>
       </div>
+      <Banner content="Pubblica un nuovo annuncio su Futurhome" linkText="Pubblica" width="40%" margin="35px auto" />
       <div className="agency-ads-section">
         <h3>
           Gli annunci di Futurhome

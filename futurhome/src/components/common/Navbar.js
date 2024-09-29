@@ -43,7 +43,7 @@ function Navbar({ openLogin, openSignup }) {
       {/* <div className="navbar-user hide-on-mobile">
         <img src={userProfilePicture} alt="Profile" className="navbar-profile-picture" />
       </div> */}
-      <div className="navbar-login-icon hide-on-desktop">
+      <div className="navbar-login-icon">
         <a href="#" className="navbar-login-link-mobile" onClick={(e) => {e.preventDefault(); openLogin();}}>
           <i className="fas fa-user"></i>
         </a>

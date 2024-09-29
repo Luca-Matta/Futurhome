@@ -103,19 +103,19 @@ function Ad() {
             <div className="ad-buttons">
               <button>
                 <img src={likeIcon} alt="Like" className="ad-buttons-icon" />
-                <span className="interaction-count hide-on-mobile">
+                <span className="interaction-count">
                   450
                 </span>
               </button>
               <button>
                 <img src={chatIcon} alt="Like" className="ad-buttons-icon" />
-                <span className="interaction-count hide-on-mobile">
+                <span className="interaction-count">
                   35
                 </span>
               </button>
               <button>
                 <img src={bookmarkIcon} alt="Like" className="ad-buttons-icon" />
-                <span className="interaction-count hide-on-mobile">
+                <span className="interaction-count">
                   70
                 </span>
               </button>
