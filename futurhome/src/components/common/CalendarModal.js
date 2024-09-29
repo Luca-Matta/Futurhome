@@ -58,7 +58,7 @@ function CalendarModal({ isOpen, onClose, profile }) {
                   <img className={profile.imageClass} src={profile.image} alt={profile.name} />              
                   <h4>{profile.name}</h4>
                 </div>
-                <h3>{profile.description}</h3>
+                <h3 className='calendar-profile-description'>{profile.description}</h3>
               </div>
               <div className="calendar-section">
                 <Calendar
