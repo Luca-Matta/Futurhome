@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
-import '../../styles/CalendarModal.css';
-import { format } from 'date-fns';
-import { it } from 'date-fns/locale';
+import React, { useState } from "react";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
+import "../../styles/CalendarModal.css";
+import { format } from "date-fns";
+import { it } from "date-fns/locale";
+import AppointmentConfirmModal from "./AppointmentConfirmModal";
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -18,7 +19,17 @@ function CalendarModal({ isOpen, onClose, profile }) {
     setSelectedDay(value);
   };
 
-  const timeSlots = ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'];
+  const timeSlots = [
+    "10:00",
+    "11:00",
+    "12:00",
+    "13:00",
+    "14:00",
+    "15:00",
+    "16:00",
+    "17:00",
+    "18:00",
+  ];
 
   const [activeTimeSlot, setActiveTimeSlot] = useState(null);
   const [isTimeSlotSelected, setIsTimeSlotSelected] = useState(false);
@@ -34,7 +45,7 @@ function CalendarModal({ isOpen, onClose, profile }) {
     setIsTimeSlotSelected(false);
   };
 
-  const handleConfirm = () => {
+  const handleTimeSlotConfirm = () => {
     setIsTimeSlotConfirmed(true);
   };
 
@@ -42,28 +53,57 @@ function CalendarModal({ isOpen, onClose, profile }) {
     setIsTimeSlotConfirmed(false);
   };
 
+  const [isCalendarModalOpen, setCalendarModalOpen] = useState(true);
+  const [isAppointmentConfirmModalOpen, setAppointmentConfirmModalOpen] =
+    useState(false);
 
+  const handleAppointmentConfirmModal = () => {
+    setCalendarModalOpen(false);
+    setAppointmentConfirmModalOpen(true);
+  };
+
+  const handleCloseAppointmentConfirmModal = () => {
+    setAppointmentConfirmModalOpen(false);
+  };
 
   return (
     <>
-      {isOpen && (
-        <div id="calendarModal" className="calendar-modal">
+      {isCalendarModalOpen && (
+        <div
+          id="calendarModal"
+          className="calendar-modal"
+        >
           <div className="calendar-modal-content">
             <div className="calendar-container">
-              <span className="close-calendar" onClick={onClose}>
+              <span
+                className="close-calendar"
+                onClick={onClose}
+              >
                 &times;
               </span>
               <div className="calendar-profile-section">
                 <div className="calendar-profile-header">
-                  <img className={profile.imageClass} src={profile.image} alt={profile.name} />              
+                  <img
+                    className={profile.imageClass}
+                    src={profile.image}
+                    alt={profile.name}
+                  />
                   <h4>{profile.name}</h4>
                 </div>
-                <h3 className='calendar-profile-description'>{profile.description}</h3>
+                <h3 className="calendar-profile-description">
+                  {profile.description}
+                </h3>
               </div>
               <div className="calendar-section">
                 <Calendar
-                  formatShortWeekday={(locale, date) => format(date, 'EEE', { locale: it })}
-                  formatMonthYear={(locale, date) => capitalizeFirstLetter(format(date, 'MMMM yyyy', { locale: it }))}
+                  formatShortWeekday={(locale, date) =>
+                    format(date, "EEE", { locale: it })
+                  }
+                  formatMonthYear={(locale, date) =>
+                    capitalizeFirstLetter(
+                      format(date, "MMMM yyyy", { locale: it })
+                    )
+                  }
                   onChange={handleDayClick}
                   value={value}
                 />
@@ -72,9 +112,11 @@ function CalendarModal({ isOpen, onClose, profile }) {
                 <h5>{selectedDay.toLocaleDateString()}</h5>
                 {!isTimeSlotSelected ? (
                   timeSlots.map((timeSlot, index) => (
-                    <div 
-                      key={index} 
-                      className={`time-slot ${timeSlot === activeTimeSlot ? 'time-slot-active' : ''}`}
+                    <div
+                      key={index}
+                      className={`time-slot ${
+                        timeSlot === activeTimeSlot ? "time-slot-active" : ""
+                      }`}
                       onClick={() => handleTimeSlotClick(timeSlot)}
                     >
                       {timeSlot}
@@ -82,20 +124,54 @@ function CalendarModal({ isOpen, onClose, profile }) {
                   ))
                 ) : !isTimeSlotConfirmed ? (
                   <>
-                    <div className="time-slot time-slot-active">{activeTimeSlot}</div>
-                    <div className='time-slots-buttons'>
-                      <button onClick={handleCancel} className='cancel-button'>Annulla</button>
-                      <button onClick={handleConfirm} className='confirm-button'>Conferma</button>
+                    <div className="time-slot time-slot-active">
+                      {activeTimeSlot}
+                    </div>
+                    <div className="time-slots-buttons">
+                      <button
+                        onClick={handleCancel}
+                        className="cancel-button"
+                      >
+                        Annulla
+                      </button>
+                      <button
+                        onClick={handleTimeSlotConfirm}
+                        className="confirm-button"
+                      >
+                        Conferma
+                      </button>
                     </div>
                   </>
                 ) : (
                   <>
-                    <input type="text" placeholder="Nome" className='calendar-input' />
-                    <input type="text" placeholder="Cellulare" className='calendar-input' />
-                    <input type="text" placeholder="Email" className='calendar-input' />
-                    <div className='time-slots-buttons'>
-                      <button onClick={handleBack} className='cancel-button'>Indietro</button>
-                      <button className='confirm-button'>Conferma</button>
+                    <input
+                      type="text"
+                      placeholder="Nome"
+                      className="calendar-input"
+                    />
+                    <input
+                      type="text"
+                      placeholder="Cellulare"
+                      className="calendar-input"
+                    />
+                    <input
+                      type="text"
+                      placeholder="Email"
+                      className="calendar-input"
+                    />
+                    <div className="time-slots-buttons">
+                      <button
+                        onClick={handleBack}
+                        className="cancel-button"
+                      >
+                        Indietro
+                      </button>
+                      <button
+                        onClick={handleAppointmentConfirmModal}
+                        className="confirm-button"
+                      >
+                        Conferma
+                      </button>
                     </div>
                   </>
                 )}
@@ -104,6 +180,10 @@ function CalendarModal({ isOpen, onClose, profile }) {
           </div>
         </div>
       )}
+      <AppointmentConfirmModal
+        isOpen={isAppointmentConfirmModalOpen}
+        onClose={handleCloseAppointmentConfirmModal}
+      />
     </>
   );
 }

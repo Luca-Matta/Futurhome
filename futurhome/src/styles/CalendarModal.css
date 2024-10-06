@@ -178,6 +178,11 @@
   .calendar-section {
     width: 65%;
   }
+
+  /* .react-calendar__navigation__next2-button,
+  .react-calendar__navigation__prev2-button {
+    display: none;
+  } */
 }
 
 @media (max-width: 360px) {
@@ -226,5 +231,15 @@
 @media (max-width: 960px) {
   .calendar-modal-content {
     width: 85%;
+  }
+}
+
+@media (max-width: 768px) {
+  .calendar-profile-section {
+    display: none;
+  }
+
+  .calendar-section {
+    width: 60%;
   }
 }

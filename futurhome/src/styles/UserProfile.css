@@ -1,0 +1,263 @@
+.user-profile-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  gap: 30px;
+}
+
+.user-profile-left {
+  width: 15%;
+  height: 300px;
+  border: 1px solid rgb(185, 215, 185);
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.user-profile-header {
+  display: flex;
+  align-items: center;
+}
+
+.user-profile-picture {
+  width: 82px;
+  height: 82px;
+  margin-right: 10px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.user-profile-name {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-profile-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.user-profile-buttons button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: none;
+  background-color: white;
+}
+
+.user-profile-chat-icon {
+  height: 18px;
+}
+
+.user-profile-greeting {
+  font-weight: 700;
+}
+
+.user-profile-logout {
+  display: flex;
+  background-color: #139a43;
+  color: white;
+  padding: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+  gap: 10px;
+}
+
+.user-profile-logout-icon {
+  height: 15px;
+  width: 15px;
+  margin-left: 10px;
+}
+
+.user-profile-right {
+  width: 45%;
+}
+
+.user-profile-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.user-profile-section {
+  background-color: rgb(218, 231, 218);
+  border-radius: 20px;
+  padding: 10px 30px;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.user-profile-section-inputs {
+  display: flex;
+  gap: 25px;
+}
+
+.user-profile-input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-profile-input {
+  position: relative;
+  display: block;
+  padding: 12px 90px 12px 12px;
+  min-width: 150px;
+  margin-bottom: 10px;
+  border: 1px solid #139a43;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.user-profile-input-label {
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
+.user-profile-button {
+  display: block;
+  padding: 8px 40px;
+  border: none;
+  border-radius: 20px;
+  background-color: #139a43;
+  color: white;
+  cursor: pointer;
+}
+
+.user-profile-data {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 1350px) {
+  .user-profile-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .user-profile-left {
+    flex-direction: row;
+    align-items: center;
+    width: 70%;
+    max-height: 90px;
+  }
+
+  .user-profile-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+  }
+
+  .user-profile-logout {
+    max-height: 20px;
+  }
+
+  .user-profile-right {
+    width: 100%;
+  }
+
+  .user-profile-title {
+    text-align: center;
+  }
+
+  .user-profile-section {
+    width: 535px;
+    max-width: 800px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .user-profile-input {
+    max-width: 150px;
+  }
+}
+
+/* @media (max-width: 768px) {
+  .user-profile-left {
+    display: none;
+  }
+} */
+
+/* @media (max-width: 1200px) {
+  .user-profile-section {
+    width: 535px;
+  }
+} */
+
+@media (max-width: 1040px) {
+  .user-profile-container {
+    gap: 20px;
+  }
+
+  .user-profile-buttons {
+    display: none;
+  }
+}
+
+.user-profile-buttons-mobile {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.user-profile-buttons-mobile button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 20px;
+  border: 0.5px solid #139a43;
+  border-radius: 20px;
+  background-color: #f5f5f5;
+}
+
+.user-profile-buttons-mobile img {
+  height: 17px;
+}
+
+@media (max-width: 680px) {
+  .user-profile-left {
+    gap: 10px;
+  }
+
+  .user-profile-buttons-mobile {
+    flex-direction: column;
+    margin-top: 20px;
+  }
+
+  .user-profile-section {
+    width: 255px;
+  }
+
+  .user-profile-section-inputs {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 680px) {
+  .user-profile-left {
+    width: 40%;
+    min-width: 225px;
+    flex-direction: column;
+  }
+
+  .user-profile-name {
+    text-wrap: nowrap;
+  }
+}
+
+@media (min-width: 1041px) {
+  .user-profile-buttons-mobile {
+    display: none;
+  }
+}

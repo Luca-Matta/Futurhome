@@ -131,10 +131,14 @@
 }
 
 @media (min-width: 768px) {
+  .profile-info-section {
+    min-width: 760px;
+  }
+
   .profile-header-left-section {
     padding: 30px 30px;
   }
-  
+
   .profile-header-right-section {
     justify-content: space-between;
     padding-right: 30px;
@@ -204,5 +208,17 @@
 @media (max-width: 415px) {
   .profile-header-vertical-line {
     margin-right: 2 0px;
+  }
+}
+
+@media (max-width: 890px) {
+  .agency-insights {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 630px) and (max-width: 768px) {
+  .calendar-section {
+    padding-left: 40px;
   }
 }

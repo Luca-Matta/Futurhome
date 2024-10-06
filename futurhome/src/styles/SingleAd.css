@@ -1,12 +1,17 @@
-.single-ad {
+.single-ad-container {
   margin: auto;
   margin-top: 100px;
   display: flex;
-  flex-direction: column;
   border-radius: 20px;
   /* width: 940px; */
   width: 85%;
+  gap: 50px;
   overflow: hidden;
+  margin-bottom: 80px;
+}
+
+.single-ad {
+  width: 70%;
 }
 
 .single-ad-content {
@@ -16,20 +21,22 @@
 
 .single-ad-pictures-container {
   display: flex;
-  height: 312px;
-  width: 826px;
+  height: 350px;
+  /* width: 826px; */
+  width: 100%;
+  overflow: hidden;
 }
 
 .single-ad-pictures {
   position: relative;
-  height: 312px;
+  height: 350px;
   width: 50%;
   flex-shrink: 0;
 }
 
 .single-ad-pictures img {
   width: 100%;
-  height: 312px;
+  height: 350px;
   object-fit: cover;
   border-bottom-left-radius: 0.8rem;
 }
@@ -111,7 +118,13 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 20px 20px 15px 20px;
+  padding: 20px 0px;
+}
+
+.single-ad-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
 }
 
 .single-ad-street {
@@ -125,9 +138,31 @@
   margin-top: 2px;
 }
 
-.single-ad-description {
+.single-ad-buttons {
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.single-ad-interaction-count {
+  color: black;
+  margin-left: 3px;
+  font-size: 17px;
+}
+
+.single-ad-description-container {
+  width: 100%;
   font-size: 14px;
   margin-top: 35px;
+  font-size: 16px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+}
+
+.single-ad-description {
+  padding: 25px;
 }
 
 .single-ad-stats {
@@ -136,6 +171,11 @@
   margin-top: 15px;
   font-size: 14px;
   color: black;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
 }
 
 .single-ad-stat {
@@ -162,28 +202,13 @@
   margin-left: 5px;
 }
 
-.single-ad-buttons {
-  display: flex;
-  width: 450px;
-  margin: auto;
-  margin-top: 30px;
-  margin-bottom: 10px;
-  justify-content: center;
-  /* background-color: rgb(185, 215, 185); */
-  /* background-color: #ececec; */
-  /* background-color: rgb(205, 223, 205); */
-  background-color: #139a43;
-  border-radius: 10px;
-  padding: 15px 100px;
-}
-
 .single-ad-buttons button {
   border: none;
   background-color: transparent;
   /* color: black; */
   color: white;
   cursor: pointer;
-  font-size: 17px;
+  font-size: 19px;
   white-space: nowrap;
   display: flex;
   align-items: center;
@@ -194,7 +219,7 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
-  height: 20px;
+  height: 24px;
   margin-right: 5px;
 }
 
@@ -209,6 +234,64 @@
 
 .picture-bottom-right-border-radius {
   border-bottom-right-radius: 0.8rem;
+}
+
+.single-ad-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+  min-width: 20%;
+  max-height: 250px;
+  background-color: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+}
+
+.single-ad-contact-form h3 {
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+.single-ad-contact-form textarea {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px 8px;
+  resize: none;
+}
+
+.single-ad-contact-form-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.single-ad-contact-form button {
+  cursor: pointer;
+  font-size: 17px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+
+.single-ad-contact-form-message-button {
+  background-color: #139a43;
+  color: white;
+  border: none;
+}
+
+.single-ad-contact-form-calendar-button {
+  background-color: white;
+  color: #139a43;
+  border: 0.5px solid #139a43;
+}
+
+.single-ad-contact-form img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
 }
 
 @media (max-width: 600px) {

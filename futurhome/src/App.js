@@ -11,7 +11,8 @@ import ChatButton from './components/common/ChatButton';
 import Chat from './components/pages/Chat';
 import Notifications from './components/pages/Notifications';
 import Bookmarks from './components/pages/Bookmarks';
-import Profile from './components/pages/Profile';
+import AgencyProfile from './components/pages/AgencyProfile';
+import UserProfile from './components/pages/UserProfile';
 import './styles/App.css';
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 
@@ -38,7 +39,8 @@ function App() {
           <Route path="/notifications" element={<Notifications selectedNotificationId={[1, 2]} />} />
           <Route path="/chat" element={<Chat selectedChatId={1} />} />
           <Route path="/bookmarks" element={<Bookmarks />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/agency-profile" element={<AgencyProfile />} />
+          <Route path="/user-profile" element={<UserProfile />} />
         </Routes>
         </div>
         <Modal isOpen={modalContent !== null} onClose={() => setModalContent(null)}>

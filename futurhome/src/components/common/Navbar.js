@@ -33,7 +33,7 @@ function Navbar({ openLogin, openSignup }) {
         <li><NavLink to="/notifications" activeClassName="active">Notifiche</NavLink></li>
         <li><NavLink to="/chat" activeClassName="active">Messaggi</NavLink></li>
         <li><NavLink to="/bookmarks" activeClassName="active">Segnalibri</NavLink></li>
-        <li><NavLink to="/profile" activeClassName="active">Profilo</NavLink></li>
+        <li><NavLink to="/agency-profile" activeClassName="active">Profilo</NavLink></li>
       </ul>
         <a href="#" className="publish-link">Pubblica annuncio</a>
       <div className="navbar-user hide-on-mobile">
