@@ -132,47 +132,47 @@ function SingleAd() {
               <div className="single-ad-buttons">
                 <button>
                   <img
-                    src={greenLikeIcon}
+                    src={likeIcon}
                     alt="Like"
-                    className="single-ad-buttons-icon"
+                    className="single-ad-button-icon"
                   />
                   <span className="single-ad-interaction-count">450</span>
                 </button>
                 <button>
                   <img
-                    src={greenChatIcon}
+                    src={chatIcon}
                     alt="Like"
-                    className="ad-buttons-icon"
+                    className="single-ad-button-icon"
                   />
                   <span className="single-ad-interaction-count">35</span>
                 </button>
                 <button>
                   <img
-                    src={greenBookmarkIcon}
+                    src={bookmarkIcon}
                     alt="Like"
-                    className="ad-buttons-icon"
+                    className="single-ad-button-icon"
                   />
                   <span className="single-ad-interaction-count">70</span>
                 </button>
                 <button>
                   <img
-                    src={greenShareIcon}
+                    src={shareIcon}
                     alt="Like"
-                    className="ad-buttons-icon"
+                    className="single-ad-button-icon"
                   />
                 </button>
                 <button>
                   <img
-                    src={greenPhoneIcon}
+                    src={phoneIcon}
                     alt="Like"
-                    className="ad-buttons-icon"
+                    className="single-ad-button-icon"
                   />
                 </button>
                 <button onClick={() => setIsModalOpen(true)}>
                   <img
-                    src={greenCalendarIcon}
+                    src={calendarIcon}
                     alt="Like"
-                    className="ad-buttons-icon"
+                    className="single-ad-button-icon"
                   />
                 </button>
               </div>
@@ -228,26 +228,35 @@ function SingleAd() {
           </div>
         </div>
       </div>
-      <form className="single-ad-contact-form">
-        <h3>Contatta l'inserzionista</h3>
-        <textarea placeholder="Mi interessa questo immobile, vorrei avere maggiori informazioni" />
-        <div className="single-ad-contact-form-buttons">
-          <button className="single-ad-contact-form-message-button">
-            <img
-              src={chatIcon}
-              alt="Chat"
-            />
-            Invia messaggio
-          </button>
-          <button className="single-ad-contact-form-calendar-button">
-            <img
-              src={greenCalendarIcon}
-              alt="Calendar"
-            />
-            Prenota visita
-          </button>
-        </div>
-      </form>
+      <div className="single-ad-contact-form-container">
+        <form className="single-ad-contact-form">
+          <h3>Contatta l'inserzionista</h3>
+          <textarea placeholder="Posso avere maggiori informazioni?" />
+          <div className="single-ad-contact-form-buttons">
+            <button className="single-ad-contact-form-message-button">
+              <img
+                src={chatIcon}
+                alt="Chat"
+              />
+              Invia messaggio
+            </button>
+            <button className="single-ad-contact-form-calendar-button">
+              <img
+                src={greenPhoneIcon}
+                alt="Phone"
+              />
+              Chiama
+            </button>
+            <button className="single-ad-contact-form-calendar-button">
+              <img
+                src={greenCalendarIcon}
+                alt="Calendar"
+              />
+              Prenota visita
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
