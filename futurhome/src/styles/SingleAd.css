@@ -424,3 +424,9 @@
     width: 95%;
   }
 }
+
+@media (max-width: 375px) {
+  .single-ad-buttons {
+    padding: 12px 8px;
+  }
+}
