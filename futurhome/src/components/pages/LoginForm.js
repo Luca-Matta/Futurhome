@@ -1,31 +1,19 @@
-import React, { useState } from 'react';
-import '../../styles/LoginForm.css';
-import '../../styles/SignupForm.css';
+import React, { useState, useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+import "../../styles/LoginForm.css";
+import "../../styles/SignupForm.css";
 
 function LoginForm({ openSignup, modalContent }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { login } = useContext(AuthContext);
 
-  const login = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-  
     try {
-      const response = await fetch('https://...', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({email, password}) 
-      });
-  
-      if (!response.ok) {
-        throw new Error('Login failed');
-      }
-  
-      const data = await response.json();
-      console.log(data.message);
+      await login(email, password);
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
     }
   };
 
@@ -33,16 +21,62 @@ function LoginForm({ openSignup, modalContent }) {
     <div className="login-form">
       <h1>ACCEDI</h1>
       <div className="switch-buttons-container">
-        <button className={modalContent === 'login' ? 'active' : ''} onClick={(e) => {e.preventDefault();}}>Accedi</button>
-        <button className={modalContent === 'signup' ? 'active' : ''} onClick={(e) => {e.preventDefault(); openSignup();}}>Registrati</button>
+        <button
+          className={modalContent === "login" ? "active" : ""}
+          onClick={(e) => {
+            e.preventDefault();
+          }}
+        >
+          Accedi
+        </button>
+        <button
+          className={modalContent === "signup" ? "active" : ""}
+          onClick={(e) => {
+            e.preventDefault();
+            openSignup();
+          }}
+        >
+          Registrati
+        </button>
       </div>
-      <form onSubmit={login}>
-        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        <a className='forgot-password' href="#">Password dimenticata?</a>
-        <button className='submit-button' type="submit">Accedi</button>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <a
+          className="forgot-password"
+          href="#"
+        >
+          Password dimenticata?
+        </a>
+        <button
+          className="submit-button"
+          type="submit"
+        >
+          Accedi
+        </button>
       </form>
-      <p>Non hai un account? <a href="#" onClick={(e) => {e.preventDefault(); openSignup();}}>Registrati</a></p>
+      <p>
+        Non hai un account?{" "}
+        <a
+          href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            openSignup();
+          }}
+        >
+          Registrati
+        </a>
+      </p>
     </div>
   );
 }
