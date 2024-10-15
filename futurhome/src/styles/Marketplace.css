@@ -1,0 +1,16 @@
+.marketplace .header {
+  position: relative;
+  background-color: #139a43;
+  width: 100%;
+  height: 450px;
+  text-align: center;
+}
+
+.marketplace .professionals {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px;
+  margin-left: -45px;
+}

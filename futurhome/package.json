@@ -2,7 +2,7 @@
   "name": "futurhome",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://www.futurhome.it",
+  "proxy": "https://futurhome.it",
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.7",
     "date-fns": "^3.6.0",
+    "http-proxy-middleware": "^3.0.3",
     "react": "^18.3.1",
     "react-calendar": "^5.0.0",
     "react-dom": "^18.3.1",

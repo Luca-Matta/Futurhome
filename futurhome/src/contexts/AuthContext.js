@@ -5,12 +5,10 @@ const AuthContext = createContext();
 
 async function register(email, password) {
   try {
-    const csrfResponse = await axios.get(
-      "https://futurhome.it/api/Auth/csrf-token"
-    );
+    const csrfResponse = await axios.get("/api/Auth/csrf-token");
     const csrfToken = csrfResponse.data;
     const response = await axios.post(
-      "https://futurhome.it/api/Auth/register",
+      "/api/Auth/register",
       {
         email,
         password,
@@ -30,34 +28,50 @@ async function register(email, password) {
 }
 
 async function login(email, password) {
-  const response = await axios.post(
-    "https://www.futurhome.it/api/Auth/login",
-    {
-      email,
-      password,
-    },
-    {
-      headers: {
-        "Content-Type": "application/json",
+  try {
+    const csrfResponse = await axios.get("/api/Auth/csrf-token");
+    const csrfToken = csrfResponse.data;
+    const response = await axios.post(
+      "/api/Auth/login",
+      {
+        email,
+        password,
       },
-    }
-  );
-  return response.data;
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRF-Token": csrfToken,
+        },
+        withCredentials: true,
+      }
+    );
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error response from server:", error.response);
+    throw error;
+  }
 }
 
 async function getProtectedData() {
-  const response = await axios.get(
-    "https://www.futurhome.it/api/Auth/protected",
-    {
+  try {
+    const response = await axios.get("/api/Auth/protected", {
       withCredentials: true,
-    }
-  );
-  return response.data;
+    });
+    console.log("Protected data fetched:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error(
+      "Error fetching protected data:",
+      error.response || error.message
+    );
+    throw error;
+  }
 }
 
 async function refreshToken() {
   const response = await axios.post(
-    "https://www.futurhome.it/api/Auth/refresh",
+    "/api/Auth/refresh",
     {},
     { withCredentials: true }
   );
@@ -66,7 +80,7 @@ async function refreshToken() {
 
 async function logout() {
   const response = await axios.post(
-    "https://www.futurhome.it/api/Auth/logout",
+    "/api/Auth/logout",
     {},
     { withCredentials: true }
   );
@@ -76,11 +90,25 @@ async function logout() {
 function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  let [userEmail, setUserEmail] = useState(null);
+  const [userData, setUserData] = useState(null);
 
-  const login = async (email, password) => {
-    const userData = await login(email, password);
-    setUser(userData);
-    setIsLoggedIn(true);
+  const loginUser = async (email, password) => {
+    try {
+      await login(email, password);
+      const userData = await fetchUserData();
+      setUser(userData);
+      setIsLoggedIn(true);
+    } catch (error) {
+      console.error("Login failed:", error);
+    }
+  };
+
+  const fetchUserData = async () => {
+    const data = await getProtectedData();
+    console.log(data);
+    setUserData(data);
+    setUserEmail(data.email);
   };
 
   const handleAuthError = async (requestFunction, ...args) => {
@@ -102,7 +130,15 @@ function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider
-      value={{ user, isLoggedIn, login, register, handleAuthError }}
+      value={{
+        user,
+        isLoggedIn,
+        login: loginUser,
+        userEmail,
+        userData,
+        register,
+        handleAuthError,
+      }}
     >
       {children}
     </AuthContext.Provider>

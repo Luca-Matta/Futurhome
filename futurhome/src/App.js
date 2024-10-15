@@ -13,6 +13,8 @@ import Notifications from "./components/pages/Notifications";
 import Bookmarks from "./components/pages/Bookmarks";
 import AgencyProfile from "./components/pages/AgencyProfile";
 import UserProfile from "./components/pages/UserProfile";
+import Marketplace from "./components/pages/Marketplace";
+import Professional from "./components/pages/ProfessionalProfile";
 import "./styles/App.css";
 import {
   BrowserRouter as Router,
@@ -74,6 +76,14 @@ function App() {
               <Route
                 path="/user-profile"
                 element={<UserProfile />}
+              />
+              <Route
+                path="/marketplace"
+                element={<Marketplace />}
+              />
+              <Route
+                path="/professional-profile"
+                element={<Professional />}
               />
             </Routes>
           </div>

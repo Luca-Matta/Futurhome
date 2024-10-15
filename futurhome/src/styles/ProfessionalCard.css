@@ -1,0 +1,55 @@
+.professional-card-link {
+  text-decoration: none;
+  color: black;
+}
+
+.professional-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 200px;
+  width: 100%;
+  max-height: 250px;
+  height: 100%;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: whitesmoke;
+  border: 1px solid #139a43;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.professional-card .picture {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1px solid #139a43;
+}
+
+.professional-card .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.professional-card .rating {
+  color: #139a43;
+}
+
+.professional-card-icons {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.professional-card-icons img {
+  height: 17px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

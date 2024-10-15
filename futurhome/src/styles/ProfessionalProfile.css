@@ -1,0 +1,267 @@
+.professional-profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  padding: 20px;
+  gap: 20px;
+}
+
+.professional-profile-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 70%;
+}
+
+.professional-profile-card-link {
+  text-decoration: none;
+  color: black;
+}
+
+.professional-profile-card {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  border-radius: 20px;
+  background-color: whitesmoke;
+  border: 1px solid #139a43;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  gap: 10px;
+}
+
+.professional-profile-card-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.professional-profile-card .picture {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1px solid #139a43;
+}
+
+.professional-profile-card .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.professional-profile-card .rating {
+  color: #139a43;
+}
+
+.professional-profile-card-icons {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.professional-profile-card-icons img {
+  height: 17px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.professional-profile-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.professional-profile-icons img {
+  height: 17px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.professional-profile .about-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.professional-profile .about-title {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.professional-profile .about-text {
+  padding: 5px 0px;
+}
+
+.profile-body {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+.professional-profile .profile-body .about-section h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.professional-profile .profile-body .education-section,
+.professional-profile .profile-body .experience-section,
+.professional-profile .profile-body .portfolio-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: auto;
+  justify-content: center;
+  background-color: #f5f5f5;
+  border-radius: 20px;
+  border: 1px solid green;
+}
+
+.section-content {
+  padding: 30px;
+}
+
+.professional-profile .profile-body .experience-section {
+  margin-bottom: 20px;
+}
+
+.professional-profile .profile-body .experience-section h2,
+.professional-profile .profile-body .experience-section h2,
+.professional-profile .profile-body .portfolio-section h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.professional-profile .profile-body .experience-section .experience-item {
+  margin-bottom: 10px;
+}
+
+.professional-profile .profile-body .experience-section .experience-item h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.professional-profile .profile-body .experience-section .experience-item p {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.professional-profile .profile-body .education-section {
+  margin-bottom: 20px;
+}
+
+.professional-profile .profile-body .education-section .education-item {
+  margin-bottom: 10px;
+}
+
+.professional-profile .profile-body .education-section .education-item h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.professional-profile .profile-body .education-section .education-item p {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.professional-profile .profile-body .portfolio-section {
+  margin-bottom: 20px;
+}
+
+.professional-profile .profile-body .portfolio-section .portfolio-item {
+  margin-bottom: 10px;
+}
+
+.professional-profile .profile-body .portfolio-section .portfolio-item h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.professional-profile .profile-body .portfolio-section .portfolio-item p {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.professional-profile .profile-body .experience-section {
+  margin-bottom: 20px;
+}
+
+.professional-profile .profile-body .experience-section h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.professional-profile .profile-body .experience-section .experience-item {
+  margin-bottom: 10px;
+}
+
+.professional-profile .profile-body .experience-section .experience-item h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.professional-profile .profile-body .experience-section .experience-item p {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.professional-profile .profile-body .education-section {
+  margin-bottom: 20px;
+}
+
+.professional-profile .profile-body .education-section h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.professional-profile .profile-body .education-section .education-item {
+  margin-bottom: 10px;
+}
+
+.professional-profile .profile-body .education-section .education-item h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.professional-profile .profile-body .education-section .education-item p {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.professional-profile .profile-body .portfolio-section {
+  margin-bottom: 20px;
+}
+
+.professional-profile .profile-body .portfolio-section h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.professional-profile .profile-body .portfolio-section .portfolio-item {
+  margin-bottom: 10px;
+}
+
+.professional-profile .profile-body .portfolio-section .portfolio-item h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.professional-profile .profile-body .portfolio-section .portfolio-item p {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.profile-body .details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
