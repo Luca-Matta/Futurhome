@@ -21,8 +21,13 @@ import PropertyLocation from "./PropertyLocation.js";
 import PropertySpecialFeatures from "./PropertySpecialFeatures.js";
 import PropertyGarden from "./PropertyGarden.js";
 
-// Add the createAd function
-const createAd = async (agencyId, price, address, bathrooms, bedrooms) => {
+const PublishAdModal = async (
+  agencyId,
+  price,
+  address,
+  bathrooms,
+  bedrooms
+) => {
   const formData = new FormData();
   formData.append("price", price);
   formData.append("address", address);
