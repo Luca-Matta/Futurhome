@@ -69,26 +69,54 @@ const ProfessionalProfile = () => {
       <div className="professional-profile-header">
         <div className="professional-profile-card">
           <div className="professional-profile-card-header">
-            <img
-              src={agent.picture}
-              alt="Agent"
-              className="picture"
-            />
-            <div>
-              <h3>
-                {agent.nome} {agent.cognome}
-              </h3>
+            <div className="professional-profile-card-header-user">
+              <img
+                src={agent.picture}
+                alt="Agent"
+                className="picture"
+              />
               <div className="info">
-                <div>{agent.lavoro}</div>
-                <div>{agent.città}</div>
-                <div className="rating">
-                  {" "}
-                  {Array(agent.recensioni)
-                    .fill()
-                    .map((_, i) => (
-                      <FaStar key={i} />
-                    ))}
+                <h3>
+                  {agent.nome} {agent.cognome}
+                </h3>
+                <div className="info">
+                  <div>{agent.lavoro}</div>
+                  <div>{agent.città}</div>
+                  <div className="rating">
+                    {" "}
+                    {Array(agent.recensioni)
+                      .fill()
+                      .map((_, i) => (
+                        <FaStar key={i} />
+                      ))}
+                  </div>
                 </div>
+              </div>
+            </div>
+            <div className="professional-profile-calls-to-action">
+              <div className="professional-profile-call-to-action">
+                <img
+                  src={greenPhoneIcon}
+                  alt="Call"
+                  className="button"
+                />
+                <div className="mobile">Chiama</div>
+              </div>
+              <div className="professional-profile-call-to-action">
+                <img
+                  src={greenChatIcon}
+                  alt="Message"
+                  className="button"
+                />
+                <div className="mobile">Messaggio</div>
+              </div>
+              <div className="professional-profile-call-to-action">
+                <img
+                  src={greenBookmarkIcon}
+                  alt="Bookmark"
+                  className="button"
+                />
+                <div className="mobile">Salva</div>
               </div>
             </div>
           </div>
@@ -100,23 +128,6 @@ const ProfessionalProfile = () => {
               profonda comprensione del mercato locale e mi impegno a fornire un
               servizio eccezionale ai miei clienti.
             </div>
-          </div>
-          <div className="professional-profile-icons">
-            <img
-              src={greenPhoneIcon}
-              alt="Call"
-              className="button"
-            />
-            <img
-              src={greenChatIcon}
-              alt="Message"
-              className="button"
-            />
-            <img
-              src={greenBookmarkIcon}
-              alt="Bookmark"
-              className="button"
-            />
           </div>
         </div>
       </div>

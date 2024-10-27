@@ -20,6 +20,7 @@ async function register(email, password) {
         },
       }
     );
+    console.log("Register response:", response.data);
     return response.data;
   } catch (error) {
     console.error("Error response from server:", error.response);
@@ -87,6 +88,55 @@ async function logout() {
   return response.data;
 }
 
+const createAgency = async (name, location) => {
+  const formData = new FormData();
+  formData.append("name", name);
+  formData.append("Location", location);
+
+  try {
+    const response = await fetch("/api/agency/register-agency", {
+      method: "POST",
+      credentials: "include",
+      body: formData,
+    });
+
+    const data = await response.json();
+    console.log("Success:", data);
+
+    return data;
+  } catch (error) {
+    console.error("Error:", error);
+    throw error;
+  }
+};
+
+const createAd = async (agencyId, price, address, bathrooms, bedrooms) => {
+  const formData = new FormData();
+  formData.append("price", price);
+  formData.append("address", address);
+  formData.append("bathrooms", bathrooms);
+  formData.append("bedrooms", bedrooms);
+
+  try {
+    const response = await fetch(
+      `/api/agency/create-post?agency_id=${agencyId}`,
+      {
+        method: "POST",
+        credentials: "include",
+        body: formData,
+      }
+    );
+
+    const data = await response.json();
+    console.log("Success:", data);
+
+    return data;
+  } catch (error) {
+    console.error("Error:", error);
+    throw error;
+  }
+};
+
 function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -137,6 +187,8 @@ function AuthProvider({ children }) {
         userEmail,
         userData,
         register,
+        createAgency,
+        createAd,
         handleAuthError,
       }}
     >

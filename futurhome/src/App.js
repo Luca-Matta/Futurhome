@@ -4,6 +4,8 @@ import Home from "./components/pages/Home";
 import Modal from "./components/common/Modal";
 import LoginForm from "./components/pages/LoginForm";
 import SignupForm from "./components/pages/SignupForm";
+import CreateAgency from "./components/common/CreateAgency";
+import PublishAdModal from "./components/common/PublishAdModal";
 import AdsFeed from "./components/pages/AdsFeed";
 import SingleAd from "./components/pages/SingleAd";
 import Footer from "./components/common/Footer";
@@ -31,9 +33,12 @@ function ChatButtonWithLocation() {
 
 function App() {
   const [modalContent, setModalContent] = useState(null);
+  const [isCreateAgencyOpen, setIsCreateAgencyOpen] = useState(false);
 
   const openLogin = () => setModalContent("login");
   const openSignup = () => setModalContent("signup");
+  const openCreateAgency = () => setIsCreateAgencyOpen(true);
+  const closeCreateAgency = () => setIsCreateAgencyOpen(false);
 
   return (
     <AuthProvider>
@@ -87,6 +92,7 @@ function App() {
               />
             </Routes>
           </div>
+          <PublishAdModal />
           <Modal
             isOpen={modalContent !== null}
             onClose={() => setModalContent(null)}
@@ -104,6 +110,10 @@ function App() {
               />
             )}
           </Modal>
+          <CreateAgency
+            isOpen={isCreateAgencyOpen}
+            setIsOpen={setIsCreateAgencyOpen}
+          />
           <ChatButtonWithLocation />
           <Footer />
         </div>

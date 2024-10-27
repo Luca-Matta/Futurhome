@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../../styles/UserProfile.css";
 import Banner from "../common/Banner";
+import CreateAgency from "../common/CreateAgency";
 import chatIcon from "../../static/icons/green-chat.svg";
 import bookmarkIcon from "../../static/icons/green-bookmark.svg";
 import logoutIcon from "../../static/icons/logout.svg";
@@ -21,6 +22,15 @@ function UserProfile() {
   const [surname, setSurname] = useState(user.surname);
   const [phone, setPhone] = useState(user.phone);
   const { userEmail, setUserEmail, isLoggedIn } = useContext(AuthContext);
+  const [isCreateAgencyModalOpen, setIsCreateAgencyModalOpen] = useState(false);
+
+  const handleOpenCreateAgencyModal = () => {
+    setIsCreateAgencyModalOpen(true);
+  };
+
+  const handleCloseCreateAgencyModal = () => {
+    setIsCreateAgencyModalOpen(false);
+  };
 
   return (
     <div>
@@ -40,6 +50,16 @@ function UserProfile() {
             </div>
           </div>
           <div className="user-profile-buttons">
+            <div onClick={handleOpenCreateAgencyModal}>
+              <div>Registra agenzia</div>
+
+              {isCreateAgencyModalOpen && (
+                <CreateAgency
+                  isOpen={isCreateAgencyModalOpen}
+                  setIsOpen={setIsCreateAgencyModalOpen}
+                />
+              )}
+            </div>
             <button>
               <img
                 src={chatIcon}

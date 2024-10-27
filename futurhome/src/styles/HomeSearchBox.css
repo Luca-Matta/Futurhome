@@ -49,7 +49,7 @@
 }
 
 .saletab li a.active {
-  background-color: #FBD160;
+  background-color: #fbd160;
   color: black;
 }
 
@@ -95,6 +95,7 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  overflow: hidden;
   z-index: 10000;
 }
 
@@ -108,7 +109,7 @@
 }
 
 .vertical-line {
-  border-left: 2.5px solid rgb(234, 239, 253);;
+  border-left: 2.5px solid rgb(234, 239, 253);
   height: 60%;
   width: 0;
   display: inline-block;
@@ -124,11 +125,11 @@
 }
 
 .search-input .fa-search {
-  color: #FBD160;
+  color: #fbd160;
   font-size: 18px;
 }
 
-.search-bar input[type='text'] {
+.search-bar input[type="text"] {
   flex-grow: 1;
   width: 100%;
   padding: 10px;
@@ -137,7 +138,7 @@
   outline: none;
 }
 
-.search-bar input[type='text']::placeholder {
+.search-bar input[type="text"]::placeholder {
   color: #999;
   font-size: 15px;
 }
@@ -150,13 +151,13 @@
   margin-right: 20px;
   font-weight: 700;
   font-size: 15px;
-  background-color: #FBD160;
+  background-color: #fbd160;
   /* color: #fff; */
   color: black;
   opacity: 0.5;
   cursor: pointer;
   /* background: linear-gradient(90deg, #07bd46 50%, #139a43 50%); */
-  background: linear-gradient(90deg, #FBD160 50%, #F9C846 50%);
+  background: linear-gradient(90deg, #fbd160 50%, #f9c846 50%);
   background-size: 200% 100%;
   background-position: right bottom;
   transition: all 0.3s ease-out;
@@ -175,13 +176,13 @@
   margin-top: 15px;
   font-weight: 700;
   font-size: 15px;
-  background-color: #FBD160;
+  background-color: #fbd160;
   /* color: #fff; */
   color: black;
   opacity: 0.5;
   cursor: pointer;
   /* background: linear-gradient(90deg, #07bd46 50%, #139a43 50%); */
-  background: linear-gradient(90deg, #FBD160 50%, #F9C846 50%);
+  background: linear-gradient(90deg, #fbd160 50%, #f9c846 50%);
   background-size: 200% 100%;
   background-position: right bottom;
   transition: all 0.3s ease-out;

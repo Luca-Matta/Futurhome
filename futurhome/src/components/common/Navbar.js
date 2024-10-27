@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "../../styles/Navbar.css";
+import PublishAdModal from "./PublishAdModal";
 // import smallLogo from '../../static/small-logo.png';
 import logo from "../../static/icons/logo.svg";
 import userProfilePicture from "../../static/image00013.jpeg";
@@ -10,6 +11,8 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 function Navbar({ openLogin, openSignup }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isPublishAdModalOpen, setIsPublishAdModalOpen] = useState(false);
+  // const { setIsPublishAdModalOpen } = useContext(PublishAdModalContext);
   const { userProfilePicture, isLoggedIn } = useContext(AuthContext);
 
   return (
@@ -136,12 +139,19 @@ function Navbar({ openLogin, openSignup }) {
           </NavLink>
         </li>
       </ul>
-      <a
-        href="#"
+      <div
         className="publish-link"
+        onClick={(e) => {
+          e.preventDefault();
+          setIsPublishAdModalOpen(true);
+        }}
       >
         Pubblica annuncio
-      </a>
+      </div>
+      <PublishAdModal
+        isOpen={isPublishAdModalOpen}
+        setIsOpen={setIsPublishAdModalOpen}
+      />
       <div className="navbar-user hide-on-mobile">
         {isLoggedIn ? (
           <NavLink

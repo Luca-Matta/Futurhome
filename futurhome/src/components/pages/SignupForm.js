@@ -24,18 +24,18 @@ function SignupForm({ openLogin, modalContent }) {
     setDropdownOpen(false);
   };
 
-  const getExplanation = (type) => {
-    switch (type) {
-      case "Sono un privato":
-        return "Info su privato";
-      case "Sono un'agenzia":
-        return "Info su agenzia";
-      case "Sono un professionista":
-        return "Info su professionista";
-      default:
-        return "Seleziona una categoria";
-    }
-  };
+  // const getExplanation = (type) => {
+  //   switch (type) {
+  //     case "Sono un privato":
+  //       return "Info su privato";
+  //     case "Sono un'agenzia":
+  //       return "Info su agenzia";
+  //     case "Sono un professionista":
+  //       return "Info su professionista";
+  //     default:
+  //       return "Seleziona una categoria";
+  //   }
+  // };
 
   const handleInputChange = (event) => {
     setFormData({

@@ -96,6 +96,7 @@
   text-decoration: none;
   text-wrap: nowrap;
   margin-right: 10px;
+  cursor: pointer;
 }
 
 .hamburger-menu {

@@ -1,0 +1,25 @@
+.property-special-features {
+  margin: 20px 0;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 30px;
+}
+
+.checkbox-item input {
+  margin-right: 10px;
+  accent-color: #139a43;
+}

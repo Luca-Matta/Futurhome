@@ -13,6 +13,7 @@
   align-items: center;
   gap: 20px;
   width: 70%;
+  margin-top: 20px;
 }
 
 .professional-profile-card-link {
@@ -33,7 +34,12 @@
 
 .professional-profile-card-header {
   display: flex;
-  align-items: center;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.professional-profile-card-header-user {
+  display: flex;
   gap: 20px;
 }
 
@@ -57,13 +63,19 @@
   color: #139a43;
 }
 
-.professional-profile-card-icons {
+.professional-profile-card-calls-to-action {
   display: flex;
   align-items: center;
-  gap: 5px;
 }
 
-.professional-profile-card-icons img {
+.professional-profile-call-to-action {
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 10px;
+}
+
+.professional-profile-card-calls-to-action img {
   height: 17px;
   padding: 5px 10px;
   border: none;
@@ -71,14 +83,14 @@
   cursor: pointer;
 }
 
-.professional-profile-icons {
+.professional-profile-calls-to-action {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 5px;
 }
 
-.professional-profile-icons img {
+.professional-profile-calls-to-action img {
   height: 17px;
   padding: 5px 10px;
   border: none;
@@ -264,4 +276,51 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+@media (max-width: 1070px) {
+  .professional-profile-card-header {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 500px) {
+  .professional-profile-card-header-user {
+    flex-direction: column;
+    gap: 0px;
+  }
+
+  .professional-profile-card-header .info {
+    text-align: center;
+  }
+}
+
+@media (max-width: 625px) {
+  .professional-profile-header,
+  .profile-body {
+    width: 90%;
+  }
+
+  .professional-profile-card-header {
+    align-items: center;
+  }
+
+  .professional-profile-card-header .picture {
+    margin: auto;
+  }
+
+  .professional-profile-card-header .info {
+    margin-bottom: 2px;
+  }
+
+  .professional-profile-header .mobile {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .professional-profile-header,
+  .profile-body {
+    width: 100%;
+  }
 }

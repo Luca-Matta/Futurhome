@@ -1,0 +1,146 @@
+.create-agency-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 999;
+}
+
+.create-agency {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  /* height: 500px; */
+  margin: 0 auto;
+  padding: 30px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  background-color: #fff;
+  color: black;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+.create-agency h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.create-agency .switch-buttons-container {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  flex-wrap: nowrap;
+}
+
+.create-agency > .switch-buttons-container > button {
+  flex: 1;
+  border-radius: 0;
+  padding: 15px 60px;
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0.7;
+  border: 1px solid #ccc;
+}
+
+.create-agency button:first-child {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.create-agency button:last-child {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.create-agency button.active {
+  background-color: #139a43;
+  color: white;
+  font-weight: 700;
+  opacity: 1;
+  transition: ease-in-out 0.3s;
+}
+
+.create-agency button:hover {
+  opacity: 1;
+  transition: ease-in-out 0.3s;
+}
+
+.create-agency form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.create-agency input {
+  display: block;
+  width: 100%;
+  padding: 20px 55px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.create-agency a {
+  color: #139a43;
+  text-decoration: none;
+}
+
+.create-agency .forgot-password {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.create-agency .submit-button {
+  width: 80%;
+  padding: 15px;
+  border: none;
+  border-radius: 20px;
+  background-color: #139a43;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  background: linear-gradient(90deg, #07bd46 50%, #139a43 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.5s ease-out;
+  margin-top: 20px;
+}
+
+.create-agency .submit-button:hover {
+  background-position: left bottom;
+}
+
+@media (max-width: 768px) {
+  .create-agency {
+    width: 100%;
+    padding: 20px 40px;
+  }
+
+  .create-agency > .switch-buttons-container > button {
+    padding: 15px 35px;
+  }
+
+  .create-agency input {
+    padding: 20px 30px;
+  }
+}
+
+@media (max-width: 360px) {
+  .create-agency {
+    width: 90%;
+    padding: 20px 22px;
+  }
+
+  .create-agency > .switch-buttons-container > button {
+    padding: 14px 23px;
+    font-size: 14px;
+  }
+}
