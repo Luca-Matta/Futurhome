@@ -21,13 +21,7 @@ import PropertyLocation from "./PropertyLocation.js";
 import PropertySpecialFeatures from "./PropertySpecialFeatures.js";
 import PropertyGarden from "./PropertyGarden.js";
 
-const PublishAdModal = async (
-  agencyId,
-  price,
-  address,
-  bathrooms,
-  bedrooms
-) => {
+const createAd = async (agencyId, price, address, bathrooms, bedrooms) => {
   const formData = new FormData();
   formData.append("price", price);
   formData.append("address", address);
@@ -75,7 +69,7 @@ function PublishAdModal({ isOpen, setIsOpen }) {
   };
 
   const handlePublish = async () => {
-    const agencyId = "your-agency-id"; // Replace with actual agency ID
+    const agencyId = "agency-id";
     const { price, address, bathrooms, rooms: bedrooms } = selectedOptions;
 
     try {
