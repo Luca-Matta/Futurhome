@@ -20,6 +20,7 @@ import PropertyAccessibility from "./PropertyAccessibility.js";
 import PropertyLocation from "./PropertyLocation.js";
 import PropertySpecialFeatures from "./PropertySpecialFeatures.js";
 import PropertyGarden from "./PropertyGarden.js";
+import PropertyAddress from "./PropertyAdress.js";
 
 const createAd = async (agencyId, price, address, bathrooms, bedrooms) => {
   const formData = new FormData();
@@ -59,6 +60,7 @@ function PublishAdModal({ isOpen, setIsOpen }) {
     bathrooms: null,
     floor: null,
   });
+  const [address, setAddress] = useState("");
 
   const handleNextSection = () => {
     setSection(section + 1);
@@ -69,7 +71,7 @@ function PublishAdModal({ isOpen, setIsOpen }) {
   };
 
   const handlePublish = async () => {
-    const agencyId = "agency-id";
+    const agencyId = "58862";
     const { price, address, bathrooms, rooms: bedrooms } = selectedOptions;
 
     try {
@@ -101,6 +103,10 @@ function PublishAdModal({ isOpen, setIsOpen }) {
             <div className="horizontal-line"></div>
             {section === 1 && (
               <>
+                <PropertyAddress
+                  address={address}
+                  setAddress={setAddress}
+                />
                 <PropertyType
                   selectedOption={selectedOption}
                   setSelectedOption={setSelectedOption}
