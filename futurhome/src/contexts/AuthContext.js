@@ -119,7 +119,7 @@ const createAd = async (agencyId, price, address, bathrooms, bedrooms) => {
 
   try {
     const response = await fetch(
-      `/api/agency/create-post?agency_id=${agencyId}`,
+      `/api/agency/create-listing?agency_id=${agencyId}`,
       {
         method: "POST",
         credentials: "include",
