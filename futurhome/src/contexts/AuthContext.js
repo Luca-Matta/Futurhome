@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import axios from "axios";
 
 const AuthContext = createContext();
@@ -54,9 +54,25 @@ async function login(email, password) {
   }
 }
 
+// async function getProtectedData() {
+//   try {
+//     const response = await axios.get("/api/Auth/protected", {
+//       withCredentials: true,
+//     });
+//     console.log("Protected data fetched:", response.data);
+//     return response.data;
+//   } catch (error) {
+//     console.error(
+//       "Error fetching protected data:",
+//       error.response || error.message
+//     );
+//     throw error;
+//   }
+// }
+
 async function getProtectedData() {
   try {
-    const response = await axios.get("/api/Auth/protected", {
+    const response = await axios.get("/api/user/info", {
       withCredentials: true,
     });
     console.log("Protected data fetched:", response.data);
@@ -109,6 +125,22 @@ const createAgency = async (name, location) => {
     throw error;
   }
 };
+
+async function getAuthorizedAgencies() {
+  try {
+    const response = await fetch("/api/user/authorized-agencies", {
+      method: "GET",
+      credentials: "include",
+    });
+
+    const data = await response.json();
+    console.log("Authorized agencies fetched:", data);
+    return data;
+  } catch (error) {
+    console.error("Error fetching authorized agencies:", error.message);
+    throw error;
+  }
+}
 
 const createAd = async (agencyId, price, address, bathrooms, bedrooms) => {
   const formData = new FormData();
@@ -178,6 +210,58 @@ function AuthProvider({ children }) {
     }
   };
 
+  useEffect(() => {
+    const token = localStorage.getItem("authToken");
+    const refreshToken = localStorage.getItem("refreshToken");
+
+    if (token) {
+      fetch("/api/auth/validate-token", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.valid) {
+            setIsLoggedIn(true);
+            setUser(data.user);
+          } else if (refreshToken) {
+            fetch("/api/auth/refresh-token", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${refreshToken}`,
+              },
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                if (data.authToken) {
+                  localStorage.setItem("authToken", data.authToken);
+                  setIsLoggedIn(true);
+                  setUser(data.user);
+                } else {
+                  localStorage.removeItem("authToken");
+                  localStorage.removeItem("refreshToken");
+                }
+              })
+              .catch((error) => {
+                console.error("Error refreshing token:", error.message);
+                localStorage.removeItem("authToken");
+                localStorage.removeItem("refreshToken");
+              });
+          } else {
+            localStorage.removeItem("authToken");
+          }
+        })
+        .catch((error) => {
+          console.error("Error validating token:", error.message);
+          localStorage.removeItem("authToken");
+        });
+    }
+  }, []);
+
   return (
     <AuthContext.Provider
       value={{
@@ -190,6 +274,7 @@ function AuthProvider({ children }) {
         createAgency,
         createAd,
         handleAuthError,
+        getAuthorizedAgencies,
       }}
     >
       {children}

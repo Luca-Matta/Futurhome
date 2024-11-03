@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../../styles/PublishAdModal.css";
+import AuthorizedAgencies from "./AuthorizedAgencies.js";
 import PropertyType from "./PropertyType.js";
 import PropertyArea from "./PropertyArea.js";
 import PropertyRooms from "./PropertyRooms.js";
@@ -103,6 +104,7 @@ function PublishAdModal({ isOpen, setIsOpen }) {
             <div className="horizontal-line"></div>
             {section === 1 && (
               <>
+                <AuthorizedAgencies />
                 <PropertyAddress
                   address={address}
                   setAddress={setAddress}
