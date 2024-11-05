@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 
 function PropertyYear({ selectedOptions, setSelectedOptions }) {
-  const [year, setYear] = useState(selectedOptions.year || "");
+  const [yearOfConstruction, setYearOfConstruction] = useState(
+    selectedOptions.year_of_construction || ""
+  );
 
   const handleYearChange = (event) => {
-    setYear(event.target.value);
+    const year = parseInt(event.target.value, 10);
+    setYearOfConstruction(year);
     setSelectedOptions({
       ...selectedOptions,
-      year: event.target.value,
+      year_of_construction: year,
     });
   };
 
@@ -17,9 +20,9 @@ function PropertyYear({ selectedOptions, setSelectedOptions }) {
       <form>
         <input
           type="number"
-          value={year}
+          value={yearOfConstruction}
           onChange={handleYearChange}
-          placeholder="Anno o intervallo"
+          placeholder="Anno di costruzione"
           className="number-input"
         />
       </form>

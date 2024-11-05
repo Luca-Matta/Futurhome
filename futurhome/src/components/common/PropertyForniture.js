@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import "../../styles/PublishAdModal.css";
 
 function PropertyFurniture({ selectedOptions, setSelectedOptions }) {
-  const [furniture, setFurniture] = useState(selectedOptions.furniture || "");
+  const [furnished, setFurnished] = useState(selectedOptions.furnished || "");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const handleFurnitureChange = (option) => {
-    setFurniture(option);
+  const handleFurnishedChange = (option) => {
+    setFurnished(option);
     setSelectedOptions({
       ...selectedOptions,
-      furniture: option,
+      furnished: option,
     });
     setIsDropdownOpen(false);
   };
@@ -24,7 +24,7 @@ function PropertyFurniture({ selectedOptions, setSelectedOptions }) {
           className={`dropdown-header ${isDropdownOpen ? "open" : ""}`}
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         >
-          {furniture || "Seleziona..."}
+          {furnished || "Seleziona..."}
         </div>
         {isDropdownOpen && (
           <ul className="dropdown-list open">
@@ -32,13 +32,13 @@ function PropertyFurniture({ selectedOptions, setSelectedOptions }) {
               <li
                 className="dropdown-list-item"
                 key={index}
-                onClick={() => handleFurnitureChange(option)}
+                onClick={() => handleFurnishedChange(option)}
               >
                 <input
                   type="radio"
-                  name="furniture"
-                  checked={furniture === option}
-                  onChange={() => handleFurnitureChange(option)}
+                  name="furnished"
+                  checked={furnished === option}
+                  onChange={() => handleFurnishedChange(option)}
                 />
                 <span>{option}</span>
               </li>

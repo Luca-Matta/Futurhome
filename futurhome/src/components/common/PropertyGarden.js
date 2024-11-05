@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function PropertyGarden({ selectedOptions, setSelectedOptions }) {
-  const [garden, setGarden] = useState(selectedOptions.garden || "");
+  const [garden, setGarden] = useState(selectedOptions.garden);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleGardenChange = (option) => {

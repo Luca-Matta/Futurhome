@@ -3,24 +3,27 @@ import "../../styles/PublishAdModal.css";
 import "../../styles/PropertyPrice.css";
 
 function PropertyPrice({ selectedOptions, setSelectedOptions }) {
-  const [priceType, setPriceType] = useState(selectedOptions.priceType || "");
+  const [priceStatus, setPriceStatus] = useState(
+    selectedOptions.price_status || ""
+  );
   const [price, setPrice] = useState(selectedOptions.price || "");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const handlePriceTypeChange = (option) => {
-    setPriceType(option);
+  const handlePriceStatusChange = (option) => {
+    setPriceStatus(option);
     setSelectedOptions({
       ...selectedOptions,
-      priceType: option,
+      price_status: option,
     });
     setIsDropdownOpen(false);
   };
 
   const handlePriceChange = (event) => {
-    setPrice(event.target.value);
+    const priceValue = parseInt(event.target.value, 10);
+    setPrice(priceValue);
     setSelectedOptions({
       ...selectedOptions,
-      price: event.target.value,
+      price: priceValue,
     });
   };
 
@@ -34,7 +37,7 @@ function PropertyPrice({ selectedOptions, setSelectedOptions }) {
           className={`dropdown-header ${isDropdownOpen ? "open" : ""}`}
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         >
-          {priceType || "Seleziona..."}
+          {priceStatus || "Seleziona..."}
         </div>
         {isDropdownOpen && (
           <ul className="dropdown-list open">
@@ -42,13 +45,13 @@ function PropertyPrice({ selectedOptions, setSelectedOptions }) {
               <li
                 className="dropdown-list-item"
                 key={index}
-                onClick={() => handlePriceTypeChange(option)}
+                onClick={() => handlePriceStatusChange(option)}
               >
                 <input
                   type="radio"
-                  name="priceType"
-                  checked={priceType === option}
-                  onChange={() => handlePriceTypeChange(option)}
+                  name="priceStatus"
+                  checked={priceStatus === option}
+                  onChange={() => handlePriceStatusChange(option)}
                 />
                 <span>{option}</span>
               </li>
@@ -56,7 +59,8 @@ function PropertyPrice({ selectedOptions, setSelectedOptions }) {
           </ul>
         )}
       </div>
-      {(priceType === "Prezzo fisso" || priceType === "Prezzo trattabile") && (
+      {(priceStatus === "Prezzo fisso" ||
+        priceStatus === "Prezzo trattabile") && (
         <input
           className="price-input number-input"
           type="number"

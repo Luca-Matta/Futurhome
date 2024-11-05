@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 
-function PropertyTypeSection({
-  selectedOption,
-  setSelectedOption,
-  selectedOptions,
-  setSelectedOptions,
-}) {
+function PropertyTypeSection({ selectedOptions, setSelectedOptions }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const options = [
@@ -25,7 +20,6 @@ function PropertyTypeSection({
   ];
 
   const handleTypeChange = (option) => {
-    setSelectedOption(option);
     setSelectedOptions({
       ...selectedOptions,
       type: option,
@@ -41,7 +35,7 @@ function PropertyTypeSection({
           className={`dropdown-header ${isDropdownOpen ? "open" : ""}`}
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         >
-          {selectedOption || "Seleziona..."}
+          {selectedOptions.type || "Seleziona..."}
         </div>
         {isDropdownOpen && (
           <ul className="dropdown-list open">
@@ -54,7 +48,7 @@ function PropertyTypeSection({
                 <input
                   type="radio"
                   name="propertyType"
-                  checked={selectedOption === option}
+                  checked={selectedOptions.type === option}
                   onChange={() => handleTypeChange(option)}
                 />
                 <span>{option}</span>

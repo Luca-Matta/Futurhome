@@ -2,21 +2,21 @@ import React, { useState } from "react";
 
 function PropertyRoomsSection({ selectedOptions, setSelectedOptions }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [rooms, setRooms] = useState(selectedOptions.rooms || "");
+  const [bedrooms, setBedrooms] = useState(selectedOptions.bedrooms || 0);
 
   const options = [
-    "Monolocale",
-    "Bilocale",
-    "Trilocale",
-    "Quadrilocale",
-    "5 o più locali",
+    { label: "Monolocale", value: 1 },
+    { label: "Bilocale", value: 2 },
+    { label: "Trilocale", value: 3 },
+    { label: "Quadrilocale", value: 4 },
+    { label: "5 o più locali", value: 5 },
   ];
 
-  const handleRoomsChange = (option) => {
-    setRooms(option);
+  const handleBedroomsChange = (value) => {
+    setBedrooms(value);
     setSelectedOptions({
       ...selectedOptions,
-      rooms: option,
+      bedrooms: value,
     });
     setIsDropdownOpen(false);
   };
@@ -29,7 +29,8 @@ function PropertyRoomsSection({ selectedOptions, setSelectedOptions }) {
           className={`dropdown-header ${isDropdownOpen ? "open" : ""}`}
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         >
-          {rooms || "Seleziona..."}
+          {options.find((option) => option.value === bedrooms)?.label ||
+            "Seleziona..."}
         </div>
         {isDropdownOpen && (
           <ul className="dropdown-list open">
@@ -37,15 +38,15 @@ function PropertyRoomsSection({ selectedOptions, setSelectedOptions }) {
               <li
                 className="dropdown-list-item"
                 key={index}
-                onClick={() => handleRoomsChange(option)}
+                onClick={() => handleBedroomsChange(option.value)}
               >
                 <input
                   type="radio"
-                  name="rooms"
-                  checked={rooms === option}
-                  onChange={() => handleRoomsChange(option)}
+                  name="bedrooms"
+                  checked={bedrooms === option.value}
+                  onChange={() => handleBedroomsChange(option.value)}
                 />
-                <span>{option}</span>
+                <span>{option.label}</span>
               </li>
             ))}
           </ul>

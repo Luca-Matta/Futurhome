@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 
-function AuthorizedAgenciesComponent() {
+function AuthorizedAgenciesComponent({
+  selectedAgencyId,
+  setSelectedAgencyId,
+}) {
   const { getAuthorizedAgencies } = useContext(AuthContext);
   const [agencies, setAgencies] = useState([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [selectedAgencyId, setSelectedAgencyId] = useState(null);
 
   useEffect(() => {
     async function fetchAgencies() {
@@ -31,7 +33,7 @@ function AuthorizedAgenciesComponent() {
 
   return (
     <div className="authorized-agencies-section">
-      <h2>Agenzie Autorizzate</h2>
+      <h2>Seleziona agenzia</h2>
       <div className="dropdown single-choice-dropdown">
         <div
           className={`dropdown-header ${isDropdownOpen ? "open" : ""}`}

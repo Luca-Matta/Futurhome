@@ -4,7 +4,13 @@ function PropertyBathroomsSection({ selectedOptions, setSelectedOptions }) {
   const [bathrooms, setBathrooms] = useState(selectedOptions.bathrooms || "");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const options = ["1", "2", "3", "4", "5 o più"];
+  const options = [
+    { label: "1", value: 1 },
+    { label: "2", value: 2 },
+    { label: "3", value: 3 },
+    { label: "4", value: 4 },
+    { label: "5 o più", value: 5 },
+  ];
 
   const handleBathroomsChange = (option) => {
     setBathrooms(option);
@@ -23,7 +29,8 @@ function PropertyBathroomsSection({ selectedOptions, setSelectedOptions }) {
           className={`dropdown-header ${isDropdownOpen ? "open" : ""}`}
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         >
-          {bathrooms || "Seleziona..."}
+          {options.find((option) => option.value === bathrooms)?.label ||
+            "Seleziona..."}
         </div>
         {isDropdownOpen && (
           <ul className="dropdown-list open">
@@ -31,15 +38,15 @@ function PropertyBathroomsSection({ selectedOptions, setSelectedOptions }) {
               <li
                 className="dropdown-list-item"
                 key={index}
-                onClick={() => handleBathroomsChange(option)}
+                onClick={() => handleBathroomsChange(option.value)}
               >
                 <input
                   type="radio"
                   name="bathrooms"
-                  checked={bathrooms === option}
-                  onChange={() => handleBathroomsChange(option)}
+                  checked={bathrooms === option.value}
+                  onChange={() => handleBathroomsChange(option.value)}
                 />
-                <span>{option}</span>
+                <span>{option.label}</span>
               </li>
             ))}
           </ul>

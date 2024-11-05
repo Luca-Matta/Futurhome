@@ -1,14 +1,16 @@
 import React, { useState } from "react";
+import "../../styles/PublishAdModal.css";
 
 function PropertyElevator({ selectedOptions, setSelectedOptions }) {
-  const [ascensore, setAscensore] = useState(selectedOptions.ascensore || "");
+  const [elevator, setElevator] = useState(selectedOptions.elevator || null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const handleAscensoreChange = (option) => {
-    setAscensore(option);
+  const handleElevatorChange = (option) => {
+    const value = option === "Sì";
+    setElevator(value);
     setSelectedOptions({
       ...selectedOptions,
-      ascensore: option,
+      elevator: value,
     });
     setIsDropdownOpen(false);
   };
@@ -16,14 +18,14 @@ function PropertyElevator({ selectedOptions, setSelectedOptions }) {
   const options = ["Sì", "No"];
 
   return (
-    <div className="property-ascensore-section">
+    <div className="property-elevator-section">
       <h2>Ascensore</h2>
       <div className="dropdown single-choice-dropdown">
         <div
           className={`dropdown-header ${isDropdownOpen ? "open" : ""}`}
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         >
-          {ascensore || "Seleziona..."}
+          {elevator === null ? "Seleziona..." : elevator ? "Sì" : "No"}
         </div>
         {isDropdownOpen && (
           <ul className="dropdown-list open">
@@ -31,13 +33,13 @@ function PropertyElevator({ selectedOptions, setSelectedOptions }) {
               <li
                 className="dropdown-list-item"
                 key={index}
-                onClick={() => handleAscensoreChange(option)}
+                onClick={() => handleElevatorChange(option)}
               >
                 <input
                   type="radio"
-                  name="ascensore"
-                  checked={ascensore === option}
-                  onChange={() => handleAscensoreChange(option)}
+                  name="elevator"
+                  checked={elevator === (option === "Sì")}
+                  onChange={() => handleElevatorChange(option)}
                 />
                 <span>{option}</span>
               </li>

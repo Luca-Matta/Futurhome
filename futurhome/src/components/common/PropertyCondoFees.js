@@ -2,26 +2,25 @@ import React, { useState } from "react";
 import "../../styles/PublishAdModal.css";
 
 function PropertyCondoFees({ selectedOptions, setSelectedOptions }) {
-  const [condoFee, setCondoFee] = useState(selectedOptions.condoFee || "");
+  const [condoFee, setCondoFee] = useState(selectedOptions.condo_fees || "");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [feeAmount, setFeeAmount] = useState(selectedOptions.feeAmount || "");
+  const [feeAmount, setFeeAmount] = useState(selectedOptions.condo_fees || 0);
 
   const handleCondoFeeChange = (option) => {
     setCondoFee(option);
     setSelectedOptions({
       ...selectedOptions,
-      condoFee: option,
-      feeAmount: option === "Presenti" ? feeAmount : "",
+      condo_fees: option === "Presenti" ? feeAmount : 0,
     });
     setIsDropdownOpen(false);
   };
 
   const handleFeeAmountChange = (event) => {
-    const amount = event.target.value;
+    const amount = parseInt(event.target.value, 10) || 0;
     setFeeAmount(amount);
     setSelectedOptions({
       ...selectedOptions,
-      feeAmount: amount,
+      condo_fees: amount,
     });
   };
 

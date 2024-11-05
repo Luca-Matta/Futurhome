@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import "../../styles/PublishAdModal.css";
 
 function PropertyExposure({ selectedOptions, setSelectedOptions }) {
-  const [exposure, setExposure] = useState(selectedOptions.exposure || []);
+  const [facing, setFacing] = useState(selectedOptions.facing || []);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const handleExposureChange = (option) => {
-    const newExposure = exposure.includes(option)
-      ? exposure.filter((item) => item !== option)
-      : [...exposure, option];
-    setExposure(newExposure);
+  const handleFacingChange = (option) => {
+    const newFacing = facing.includes(option)
+      ? facing.filter((item) => item !== option)
+      : [...facing, option];
+    setFacing(newFacing);
     setSelectedOptions({
       ...selectedOptions,
-      exposure: newExposure,
+      facing: newFacing,
     });
   };
 
@@ -32,7 +32,7 @@ function PropertyExposure({ selectedOptions, setSelectedOptions }) {
           className={`dropdown-header ${isDropdownOpen ? "open" : ""}`}
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         >
-          {exposure.length > 0 ? exposure.join(", ") : "Seleziona..."}
+          {facing.length > 0 ? facing.join(", ") : "Seleziona..."}
         </div>
         {isDropdownOpen && (
           <ul className="dropdown-list open">
@@ -40,12 +40,12 @@ function PropertyExposure({ selectedOptions, setSelectedOptions }) {
               <li
                 className="dropdown-list-item"
                 key={index}
-                onClick={() => handleExposureChange(option)}
+                onClick={() => handleFacingChange(option)}
               >
                 <input
                   type="checkbox"
-                  checked={exposure.includes(option)}
-                  onChange={() => handleExposureChange(option)}
+                  checked={facing.includes(option)}
+                  onChange={() => handleFacingChange(option)}
                 />
                 <span>{option}</span>
               </li>

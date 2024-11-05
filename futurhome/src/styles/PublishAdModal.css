@@ -34,6 +34,42 @@
   font-size: 26px;
 }
 
+.tab-button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  color: rgb(95, 95, 95);
+}
+
+.tab-button.active {
+  font-weight: 700;
+  color: black;
+}
+
+.progress-bar-container {
+  margin-top: 20px;
+  height: 8px;
+  width: 250px;
+  border-radius: 4px;
+  background-color: #e0e0e0;
+}
+
+.progress-bar-background {
+  height: 100%;
+  width: 250px;
+  border-radius: 4px;
+  background-color: #e0e0e0;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: #139a43;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
 .horizontal-line {
   width: 100%;
   height: 1px;
@@ -89,33 +125,15 @@
   width: 100%;
 }
 
-.publish-ad-modal .submit-button,
-.publish-ad-modal .next-button,
-.publish-ad-modal .previous-button {
+.publish-ad-modal .submit-button {
   padding: 15px;
   border: none;
   border-radius: 20px;
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
-  background-size: 200% 100%;
-  background-position: right bottom;
-  transition: all 0.5s ease-out;
-  margin-top: 20px;
-}
-
-.publish-ad-modal .next-button,
-.publish-ad-modal .submit-button {
-  width: 50%;
-}
-
-.publish-ad-modal .previous-button {
-  background-color: #dddada;
-  padding: 15px 20px;
-}
-
-.publish-ad-modal .next-button,
-.publish-ad-modal .submit-button {
+  margin-top: 30px;
+  width: 100%;
   /* background-color: #fbd160; */
   background-color: #139a43;
   color: white;
@@ -125,8 +143,7 @@
   transition: all 0.3s ease-out;
 }
 
-.publish-ad-modal .submit-button:hover,
-.publish-ad-modal .next-button:hover {
+.publish-ad-modal .submit-button:hover {
   background-position: left bottom;
 }
 

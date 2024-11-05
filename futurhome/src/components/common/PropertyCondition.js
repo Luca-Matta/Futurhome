@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 function PropertyConditionSection({ selectedOptions, setSelectedOptions }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [condition, setCondition] = useState(selectedOptions.condition || "");
 
   const options = [
     "Nuovo",
@@ -13,7 +12,6 @@ function PropertyConditionSection({ selectedOptions, setSelectedOptions }) {
   ];
 
   const handleConditionChange = (option) => {
-    setCondition(option);
     setSelectedOptions({
       ...selectedOptions,
       condition: option,
@@ -29,7 +27,7 @@ function PropertyConditionSection({ selectedOptions, setSelectedOptions }) {
           className={`dropdown-header ${isDropdownOpen ? "open" : ""}`}
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         >
-          {condition || "Seleziona..."}
+          {selectedOptions.condition || "Seleziona..."}
         </div>
         {isDropdownOpen && (
           <ul className="dropdown-list open">
@@ -42,7 +40,7 @@ function PropertyConditionSection({ selectedOptions, setSelectedOptions }) {
                 <input
                   type="radio"
                   name="condition"
-                  checked={condition === option}
+                  checked={selectedOptions.condition === option}
                   onChange={() => handleConditionChange(option)}
                 />
                 <span>{option}</span>

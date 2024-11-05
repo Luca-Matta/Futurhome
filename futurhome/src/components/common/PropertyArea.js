@@ -1,24 +1,26 @@
 import React, { useState } from "react";
 
 function PropertyAreaSection({ selectedOptions, setSelectedOptions }) {
-  const [area, setArea] = useState(selectedOptions.area || "");
-  const [floorArea, setFloorArea] = useState(selectedOptions.floorArea || "");
+  const [totalArea, setTotalArea] = useState(selectedOptions.total_area || "");
+  const [walkableArea, setWalkableArea] = useState(
+    selectedOptions.walkable_area || ""
+  );
 
-  const handleAreaChange = (event) => {
-    const value = event.target.value;
-    setArea(value);
+  const handleTotalAreaChange = (event) => {
+    const value = event.target.value ? parseInt(event.target.value, 10) : "";
+    setTotalArea(value);
     setSelectedOptions({
       ...selectedOptions,
-      area: value,
+      total_area: value,
     });
   };
 
-  const handleFloorAreaChange = (event) => {
-    const value = event.target.value;
-    setFloorArea(value);
+  const handleWalkableAreaChange = (event) => {
+    const value = event.target.value ? parseInt(event.target.value, 10) : "";
+    setWalkableArea(value);
     setSelectedOptions({
       ...selectedOptions,
-      floorArea: value,
+      walkable_area: value,
     });
   };
 
@@ -29,18 +31,18 @@ function PropertyAreaSection({ selectedOptions, setSelectedOptions }) {
           <h2>Metratura totale</h2>
           <input
             type="number"
-            value={area}
-            onChange={handleAreaChange}
+            value={totalArea}
+            onChange={handleTotalAreaChange}
             placeholder="Inserisci..."
             className="number-input"
           />
         </label>
         <label>
-          <h2>Area calpestabile</h2>
+          <h2>Superficie interna utile/calpestabile</h2>
           <input
             type="number"
-            value={floorArea}
-            onChange={handleFloorAreaChange}
+            value={walkableArea}
+            onChange={handleWalkableAreaChange}
             placeholder="Inserisci..."
             className="number-input"
           />

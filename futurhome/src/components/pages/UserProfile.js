@@ -37,12 +37,14 @@ function UserProfile() {
       <div className="user-profile-container">
         <div className="user-profile-left">
           <div className="user-profile-header">
-            <img
-              className="user-profile-picture"
-              // src={isLoggedIn ? user.profilePicture : defaultAvatar}
-              src={user.profilePicture}
-              alt="User profile"
-            />
+            <div className="user-profile-picture-container">
+              <img
+                className="user-profile-picture"
+                // src={isLoggedIn ? user.profilePicture : defaultAvatar}
+                src={user.profilePicture}
+                alt="User profile"
+              />
+            </div>
             <div className="user-profile-name">
               <div className="user-profile-greeting">
                 {name} {surname}

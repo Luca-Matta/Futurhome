@@ -2,20 +2,20 @@ import React, { useState } from "react";
 import "../../styles/PublishAdModal.css";
 
 function PropertySpecialFeatures({ selectedOptions, setSelectedOptions }) {
-  const [specialFeatures, setSpecialFeatures] = useState(
-    selectedOptions.specialFeatures || []
+  const [otherFeatures, setOtherFeatures] = useState(
+    selectedOptions.other_features || []
   );
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const handleSpecialFeaturesChange = (option) => {
-    const updatedFeatures = specialFeatures.includes(option)
-      ? specialFeatures.filter((feature) => feature !== option)
-      : [...specialFeatures, option];
+  const handleOtherFeaturesChange = (option) => {
+    const updatedFeatures = otherFeatures.includes(option)
+      ? otherFeatures.filter((feature) => feature !== option)
+      : [...otherFeatures, option];
 
-    setSpecialFeatures(updatedFeatures);
+    setOtherFeatures(updatedFeatures);
     setSelectedOptions({
       ...selectedOptions,
-      specialFeatures: updatedFeatures,
+      other_features: updatedFeatures,
     });
   };
 
@@ -36,9 +36,7 @@ function PropertySpecialFeatures({ selectedOptions, setSelectedOptions }) {
           className={`dropdown-header ${isDropdownOpen ? "open" : ""}`}
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         >
-          {specialFeatures.length > 0
-            ? specialFeatures.join(", ")
-            : "Seleziona..."}
+          {otherFeatures.length > 0 ? otherFeatures.join(", ") : "Seleziona..."}
         </div>
         {isDropdownOpen && (
           <ul className="dropdown-list open">
@@ -46,12 +44,12 @@ function PropertySpecialFeatures({ selectedOptions, setSelectedOptions }) {
               <li
                 className="dropdown-list-item"
                 key={index}
-                onClick={() => handleSpecialFeaturesChange(option)}
+                onClick={() => handleOtherFeaturesChange(option)}
               >
                 <input
                   type="checkbox"
-                  checked={specialFeatures.includes(option)}
-                  onChange={() => handleSpecialFeaturesChange(option)}
+                  checked={otherFeatures.includes(option)}
+                  onChange={() => handleOtherFeaturesChange(option)}
                 />
                 <span>{option}</span>
               </li>

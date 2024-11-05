@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 
 function PropertyBalcony({ selectedOptions, setSelectedOptions }) {
-  const [balcony, setBalcony] = useState(selectedOptions.balcony || []);
+  const [externalDependencies, setExternalDependencies] = useState(
+    selectedOptions.external_dependencies || []
+  );
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const handleBalconyChange = (option) => {
-    const newBalcony = balcony.includes(option)
-      ? balcony.filter((item) => item !== option)
-      : [...balcony, option];
-    setBalcony(newBalcony);
+  const handleExternalDependenciesChange = (option) => {
+    const newExternalDependencies = externalDependencies.includes(option)
+      ? externalDependencies.filter((item) => item !== option)
+      : [...externalDependencies, option];
+    setExternalDependencies(newExternalDependencies);
     setSelectedOptions({
       ...selectedOptions,
-      balcony: newBalcony,
+      external_dependencies: newExternalDependencies,
     });
   };
 
@@ -30,7 +32,9 @@ function PropertyBalcony({ selectedOptions, setSelectedOptions }) {
           className={`dropdown-header ${isDropdownOpen ? "open" : ""}`}
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         >
-          {balcony.length > 0 ? balcony.join(", ") : "Seleziona..."}
+          {externalDependencies.length > 0
+            ? externalDependencies.join(", ")
+            : "Seleziona..."}
         </div>
         {isDropdownOpen && (
           <ul className="dropdown-list open">
@@ -38,12 +42,12 @@ function PropertyBalcony({ selectedOptions, setSelectedOptions }) {
               <li
                 className="dropdown-list-item"
                 key={index}
-                onClick={() => handleBalconyChange(option)}
+                onClick={() => handleExternalDependenciesChange(option)}
               >
                 <input
                   type="checkbox"
-                  checked={balcony.includes(option)}
-                  onChange={() => handleBalconyChange(option)}
+                  checked={externalDependencies.includes(option)}
+                  onChange={() => handleExternalDependenciesChange(option)}
                 />
                 <span>{option}</span>
               </li>

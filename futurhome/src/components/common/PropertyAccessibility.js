@@ -1,22 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/PublishAdModal.css";
 
 function PropertyAccessibility({ selectedOptions, setSelectedOptions }) {
   const [accessibility, setAccessibility] = useState(
-    selectedOptions.accessibility || ""
+    selectedOptions.accessibility || "Seleziona..."
   );
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+  useEffect(() => {
+    setSelectedOptions((prevOptions) => ({
+      ...prevOptions,
+      accessibility: accessibility,
+    }));
+  }, [accessibility, setSelectedOptions]);
+
   const handleAccessibilityChange = (option) => {
     setAccessibility(option);
-    setSelectedOptions({
-      ...selectedOptions,
-      accessibility: option,
-    });
     setIsDropdownOpen(false);
   };
 
-  const options = ["Adatto a persone con mobilità ridotta", "Non adatto"];
+  const options = [
+    "Adatto a persone con mobilità ridotta",
+    "Non adatto a persone con mobilità ridotta",
+  ];
 
   return (
     <div className="property-accessibility">
@@ -26,7 +32,7 @@ function PropertyAccessibility({ selectedOptions, setSelectedOptions }) {
           className={`dropdown-header ${isDropdownOpen ? "open" : ""}`}
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         >
-          {accessibility ? accessibility : "Seleziona..."}
+          {accessibility}
         </div>
         {isDropdownOpen && (
           <ul className="dropdown-list open">

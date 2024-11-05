@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 
 function PropertyEnergyClass({ selectedOptions, setSelectedOptions }) {
-  const [energyClass, setEnergyClass] = useState(
-    selectedOptions.energyClass || ""
+  const [energyConsumption, setEnergyConsumption] = useState(
+    selectedOptions.energy_consumption || ""
   );
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const handleEnergyClassChange = (option) => {
-    setEnergyClass(option);
+  const handleEnergyConsumptionChange = (option) => {
+    setEnergyConsumption(option);
     setSelectedOptions({
       ...selectedOptions,
-      energyClass: option,
+      energy_consumption: option,
     });
     setIsDropdownOpen(false);
   };
@@ -25,7 +25,7 @@ function PropertyEnergyClass({ selectedOptions, setSelectedOptions }) {
           className={`dropdown-header ${isDropdownOpen ? "open" : ""}`}
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         >
-          {energyClass || "Seleziona..."}
+          {energyConsumption || "Seleziona..."}
         </div>
         {isDropdownOpen && (
           <ul className="dropdown-list open">
@@ -33,13 +33,13 @@ function PropertyEnergyClass({ selectedOptions, setSelectedOptions }) {
               <li
                 className="dropdown-list-item"
                 key={index}
-                onClick={() => handleEnergyClassChange(option)}
+                onClick={() => handleEnergyConsumptionChange(option)}
               >
                 <input
                   type="radio"
-                  name="energyClass"
-                  checked={energyClass === option}
-                  onChange={() => handleEnergyClassChange(option)}
+                  name="energyConsumption"
+                  checked={energyConsumption === option}
+                  onChange={() => handleEnergyConsumptionChange(option)}
                 />
                 <span>{option}</span>
               </li>

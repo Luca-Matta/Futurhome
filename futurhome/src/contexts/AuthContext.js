@@ -142,12 +142,63 @@ async function getAuthorizedAgencies() {
   }
 }
 
-const createAd = async (agencyId, price, address, bathrooms, bedrooms) => {
+const createAd = async (
+  agencyId,
+  type,
+  condition,
+  total_area,
+  walkable_area,
+  bedrooms,
+  bathrooms,
+  floor,
+  multiple_stories,
+  total_floors,
+  external_dependencies,
+  garden,
+  heating,
+  energy_consumption,
+  year_of_construction,
+  price,
+  price_status,
+  furnished,
+  facing,
+  extra_dependencies,
+  condo_fees,
+  elevator,
+  accessibility,
+  position,
+  other_features,
+  address
+) => {
   const formData = new FormData();
-  formData.append("price", price);
-  formData.append("address", address);
-  formData.append("bathrooms", bathrooms);
+  formData.append("type", type);
+  formData.append("condition", condition);
+  formData.append("total_area", total_area);
+  formData.append("walkable_area", walkable_area);
   formData.append("bedrooms", bedrooms);
+  formData.append("bathrooms", bathrooms);
+  formData.append("floor", floor);
+  formData.append("multiple_stories", multiple_stories);
+  formData.append("total_floors", total_floors);
+  formData.append(
+    "external_dependencies",
+    JSON.stringify(external_dependencies)
+  );
+  formData.append("garden", garden);
+  formData.append("heating", JSON.stringify(heating));
+  formData.append("energy_consumption", energy_consumption);
+  formData.append("year_of_construction", year_of_construction);
+  formData.append("price", price);
+  formData.append("price_status", price_status);
+  formData.append("furnished", furnished);
+  formData.append("facing", JSON.stringify(facing));
+  formData.append("extra_dependencies", JSON.stringify(extra_dependencies));
+  formData.append("condo_fees", condo_fees);
+  formData.append("elevator", elevator);
+  formData.append("accessibility", accessibility);
+  formData.append("position", position);
+  formData.append("other_features", JSON.stringify(other_features));
+  formData.append("address", address);
 
   try {
     const response = await fetch(
@@ -168,6 +219,19 @@ const createAd = async (agencyId, price, address, bathrooms, bedrooms) => {
     throw error;
   }
 };
+
+async function fetchAdsIds(page = 0) {
+  try {
+    const response = await axios.get(`/api/get-post-ids?page=${page}`);
+    if (response.status === 204) {
+      return null;
+    }
+    return response.data.post_ids;
+  } catch (error) {
+    console.error("Error fetching ads IDs:", error.message);
+    throw error;
+  }
+}
 
 function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
@@ -275,6 +339,7 @@ function AuthProvider({ children }) {
         createAd,
         handleAuthError,
         getAuthorizedAgencies,
+        fetchAdsIds,
       }}
     >
       {children}

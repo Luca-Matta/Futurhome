@@ -1,19 +1,16 @@
 import React, { useState } from "react";
 
 function PropertyLocation({ selectedOptions, setSelectedOptions }) {
-  const [location, setLocation] = useState(selectedOptions.location || []);
+  const [position, setPosition] = useState(selectedOptions.position || "");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const handleLocationChange = (option) => {
-    const updatedLocation = location.includes(option)
-      ? location.filter((loc) => loc !== option)
-      : [...location, option];
-
-    setLocation(updatedLocation);
+  const handlePositionChange = (option) => {
+    setPosition(option);
     setSelectedOptions({
       ...selectedOptions,
-      location: updatedLocation,
+      position: option,
     });
+    setIsDropdownOpen(false);
   };
 
   const options = [
@@ -33,7 +30,7 @@ function PropertyLocation({ selectedOptions, setSelectedOptions }) {
           className={`dropdown-header ${isDropdownOpen ? "open" : ""}`}
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         >
-          {location.length > 0 ? location.join(", ") : "Seleziona..."}
+          {position || "Seleziona..."}
         </div>
         {isDropdownOpen && (
           <ul className="dropdown-list open">
@@ -41,12 +38,13 @@ function PropertyLocation({ selectedOptions, setSelectedOptions }) {
               <li
                 className="dropdown-list-item"
                 key={index}
-                onClick={() => handleLocationChange(option)}
+                onClick={() => handlePositionChange(option)}
               >
                 <input
-                  type="checkbox"
-                  checked={location.includes(option)}
-                  onChange={() => handleLocationChange(option)}
+                  type="radio"
+                  name="position"
+                  checked={position === option}
+                  onChange={() => handlePositionChange(option)}
                 />
                 <span>{option}</span>
               </li>

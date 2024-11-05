@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 
 function PropertyFloor({ selectedOptions, setSelectedOptions }) {
-  const [floor, setFloor] = useState(selectedOptions.floor || "");
-  const [multiLevel, setMultiLevel] = useState(
-    selectedOptions.multiLevel || ""
+  const [floor, setFloor] = useState(selectedOptions.floor);
+  const [multipleStories, setMultipleStories] = useState(
+    selectedOptions.multiple_stories
   );
-  const [totalFloors, setTotalFloors] = useState(
-    selectedOptions.totalFloors || ""
-  );
+  const [totalFloors, setTotalFloors] = useState(selectedOptions.total_floors);
   const [isFloorDropdownOpen, setIsFloorDropdownOpen] = useState(false);
   const [isMultiLevelDropdownOpen, setIsMultiLevelDropdownOpen] =
     useState(false);
@@ -22,30 +20,31 @@ function PropertyFloor({ selectedOptions, setSelectedOptions }) {
   };
 
   const handleMultiLevelChange = (option) => {
-    setMultiLevel(option);
+    const value = option === "Sì";
+    setMultipleStories(value);
     setSelectedOptions({
       ...selectedOptions,
-      multiLevel: option,
+      multiple_stories: value,
     });
     setIsMultiLevelDropdownOpen(false);
   };
 
   const handleTotalFloorsChange = (event) => {
-    const value = event.target.value;
+    const value = parseInt(event.target.value, 10);
     setTotalFloors(value);
     setSelectedOptions({
       ...selectedOptions,
-      totalFloors: value,
+      total_floors: value,
     });
   };
 
   const floorOptions = [
-    "Interrato / seminterrato",
-    "Piano terra",
-    "Primo piano",
-    "Piano intermedio",
-    "Ultimo piano",
-    "Piano attico",
+    { label: "Interrato / seminterrato", value: -1 },
+    { label: "Piano terra", value: 0 },
+    { label: "Primo piano", value: 1 },
+    { label: "Piano intermedio", value: 2 },
+    { label: "Ultimo piano", value: 3 },
+    { label: "Piano attico", value: 4 },
   ];
 
   const multiLevelOptions = ["Sì", "No"];
@@ -58,7 +57,9 @@ function PropertyFloor({ selectedOptions, setSelectedOptions }) {
           className={`dropdown-header ${isFloorDropdownOpen ? "open" : ""}`}
           onClick={() => setIsFloorDropdownOpen(!isFloorDropdownOpen)}
         >
-          {floor || "Seleziona..."}
+          {floor !== undefined
+            ? floorOptions.find((option) => option.value === floor)?.label
+            : "Seleziona..."}
         </div>
         {isFloorDropdownOpen && (
           <ul className="dropdown-list open">
@@ -66,15 +67,15 @@ function PropertyFloor({ selectedOptions, setSelectedOptions }) {
               <li
                 className="dropdown-list-item"
                 key={index}
-                onClick={() => handleFloorChange(option)}
+                onClick={() => handleFloorChange(option.value)}
               >
                 <input
                   type="radio"
                   name="floor"
-                  checked={floor === option}
-                  onChange={() => handleFloorChange(option)}
+                  checked={floor === option.value}
+                  onChange={() => handleFloorChange(option.value)}
                 />
-                <span>{option}</span>
+                <span>{option.label}</span>
               </li>
             ))}
           </ul>
@@ -89,7 +90,11 @@ function PropertyFloor({ selectedOptions, setSelectedOptions }) {
           }`}
           onClick={() => setIsMultiLevelDropdownOpen(!isMultiLevelDropdownOpen)}
         >
-          {multiLevel || "Seleziona..."}
+          {multipleStories !== undefined
+            ? multipleStories
+              ? "Sì"
+              : "No"
+            : "Seleziona..."}
         </div>
         {isMultiLevelDropdownOpen && (
           <ul className="dropdown-list open">
@@ -101,8 +106,8 @@ function PropertyFloor({ selectedOptions, setSelectedOptions }) {
               >
                 <input
                   type="radio"
-                  name="multiLevel"
-                  checked={multiLevel === option}
+                  name="multiple_stories"
+                  checked={multipleStories === (option === "Sì")}
                   onChange={() => handleMultiLevelChange(option)}
                 />
                 <span>{option}</span>
@@ -112,12 +117,12 @@ function PropertyFloor({ selectedOptions, setSelectedOptions }) {
         )}
       </div>
 
-      {multiLevel === "Sì" && (
+      {multipleStories && (
         <>
           <h2>Numero totale di piani</h2>
           <input
             type="number"
-            value={totalFloors}
+            value={totalFloors !== undefined ? totalFloors : ""}
             onChange={handleTotalFloorsChange}
             min="1"
             placeholder="Inserisci..."
