@@ -29,11 +29,19 @@ async function register(email, password) {
 }
 
 async function login(email, password) {
+  const preReleaseKey = "Hya4epmFOarYyVmX7xXlLyLnO0uAv7MB";
   try {
-    const csrfResponse = await axios.get("/api/Auth/csrf-token");
+    const csrfResponse = await axios.get(
+      `/api/Auth/csrf-token?pre-release-key=${preReleaseKey}`,
+      {
+        headers: {
+          "X-Pre-Release-Key": preReleaseKey,
+        },
+      }
+    );
     const csrfToken = csrfResponse.data;
     const response = await axios.post(
-      "/api/Auth/login",
+      `/api/Auth/login?pre-release-key=${preReleaseKey}`,
       {
         email,
         password,
@@ -42,6 +50,7 @@ async function login(email, password) {
         headers: {
           "Content-Type": "application/json",
           "X-CSRF-Token": csrfToken,
+          "X-Pre-Release-Key": preReleaseKey,
         },
         withCredentials: true,
       }
@@ -105,16 +114,23 @@ async function logout() {
 }
 
 const createAgency = async (name, location) => {
+  const preReleaseKey = "Hya4epmFOarYyVmX7xXlLyLnO0uAv7MB";
   const formData = new FormData();
   formData.append("name", name);
   formData.append("Location", location);
 
   try {
-    const response = await fetch("/api/agency/register-agency", {
-      method: "POST",
-      credentials: "include",
-      body: formData,
-    });
+    const response = await fetch(
+      `/api/agency/register-agency?pre-release-key=${preReleaseKey}`,
+      {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "X-Pre-Release-Key": preReleaseKey,
+        },
+        body: formData,
+      }
+    );
 
     const data = await response.json();
     console.log("Success:", data);
@@ -127,11 +143,18 @@ const createAgency = async (name, location) => {
 };
 
 async function getAuthorizedAgencies() {
+  const preReleaseKey = "Hya4epmFOarYyVmX7xXlLyLnO0uAv7MB";
   try {
-    const response = await fetch("/api/user/authorized-agencies", {
-      method: "GET",
-      credentials: "include",
-    });
+    const response = await fetch(
+      `/api/user/authorized-agencies?pre-release-key=${preReleaseKey}`,
+      {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          "X-Pre-Release-Key": preReleaseKey,
+        },
+      }
+    );
 
     const data = await response.json();
     console.log("Authorized agencies fetched:", data);
@@ -219,19 +242,6 @@ const createAd = async (
     throw error;
   }
 };
-
-async function fetchAdsIds(page = 0) {
-  try {
-    const response = await axios.get(`/api/get-post-ids?page=${page}`);
-    if (response.status === 204) {
-      return null;
-    }
-    return response.data.post_ids;
-  } catch (error) {
-    console.error("Error fetching ads IDs:", error.message);
-    throw error;
-  }
-}
 
 function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
@@ -339,7 +349,6 @@ function AuthProvider({ children }) {
         createAd,
         handleAuthError,
         getAuthorizedAgencies,
-        fetchAdsIds,
       }}
     >
       {children}

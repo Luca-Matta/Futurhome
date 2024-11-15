@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/Ad.css";
 import Slider from "react-slick";
 import CalendarModal from "../common/CalendarModal";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import likeIcon from "../../static/icons/like.svg";
+import yellowLikeIcon from "../../static/icons/yellow-like.svg";
 import chatIcon from "../../static/icons/chat.svg";
 import bookmarkIcon from "../../static/icons/bookmark.svg";
 import phoneIcon from "../../static/icons/phone.svg";
@@ -18,13 +19,41 @@ import adPicture1 from "../../static/ad-picture1.jpeg";
 import adPicture2 from "../../static/ad-picture2.jpeg";
 import adPicture3 from "../../static/ad-picture3.jpeg";
 import PietroRanteProfilePicture from "../../static/pietro.png";
+import { addLike, removeLike } from "../../utils/apiUtils";
 
-function Ad() {
-  const [pictures, setPictures] = useState([
-    adPicture1,
-    adPicture2,
-    adPicture3,
-  ]);
+function Ad({ ad }) {
+  const [likeCount, setLikeCount] = useState(450);
+  const [liked, setLiked] = useState(false);
+  const [pictures, setPictures] = useState([]);
+  const [isCalendarModalOpen, setIsCalendarModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (ad) {
+      setPictures([adPicture1, adPicture2, adPicture3]);
+      setLikeCount(ad.initialLikes || 450);
+    }
+  }, [ad]);
+
+  if (!ad) {
+    return <div>Caricamento...</div>;
+  }
+
+  const { id } = ad.listing;
+
+  const handleLike = async () => {
+    try {
+      let newLikeCount;
+      if (liked) {
+        newLikeCount = await removeLike(id);
+      } else {
+        newLikeCount = await addLike(id);
+      }
+      setLikeCount(newLikeCount);
+      setLiked(!liked);
+    } catch (error) {
+      console.error("Failed to update like:", error);
+    }
+  };
 
   const totalPictures = pictures.length;
 
@@ -49,8 +78,6 @@ function Ad() {
     prevArrow: <SamplePrevArrow />,
   };
 
-  const [isCalendarModalOpen, setIsCalendarModalOpen] = useState(false);
-
   const user = {
     image: PietroRanteProfilePicture,
     name: "Pietro Rante",
@@ -63,27 +90,15 @@ function Ad() {
       <div className="ad-content">
         <div className="ad-pictures">
           <Slider {...settings}>
-            <div>
-              <img
-                className="ad-picture"
-                src={adPicture1}
-                alt="Ad"
-              />
-            </div>
-            <div>
-              <img
-                className="ad-picture"
-                src={adPicture2}
-                alt="Ad"
-              />
-            </div>
-            <div>
-              <img
-                className="ad-picture"
-                src={adPicture3}
-                alt="Ad"
-              />
-            </div>
+            {pictures.map((pic, index) => (
+              <div key={index}>
+                <img
+                  className="ad-picture"
+                  src={pic}
+                  alt="Ad"
+                />
+              </div>
+            ))}
           </Slider>
           <div className="pictures-count">
             <i className="fas fa-camera"></i>
@@ -145,18 +160,18 @@ function Ad() {
             </div>
           </div>
           <div className="ad-buttons">
-            <button>
+            <button onClick={handleLike}>
               <img
-                src={likeIcon}
-                alt="Like"
+                src={liked ? yellowLikeIcon : likeIcon}
+                alt={liked ? "Unlike" : "Like"}
                 className="ad-buttons-icon"
               />
-              <span className="interaction-count">450</span>
+              <span className="interaction-count">{likeCount}</span>
             </button>
             <button>
               <img
                 src={chatIcon}
-                alt="Like"
+                alt="Chat"
                 className="ad-buttons-icon"
               />
               <span className="interaction-count">35</span>
@@ -164,7 +179,7 @@ function Ad() {
             <button>
               <img
                 src={bookmarkIcon}
-                alt="Like"
+                alt="Bookmark"
                 className="ad-buttons-icon"
               />
               <span className="interaction-count">70</span>
@@ -172,14 +187,14 @@ function Ad() {
             <button>
               <img
                 src={shareIcon}
-                alt="Like"
+                alt="Share"
                 className="ad-buttons-icon"
               />
             </button>
             <button>
               <img
                 src={phoneIcon}
-                alt="Like"
+                alt="Phone"
                 className="ad-buttons-icon"
               />
               <span className="interaction-count hide-on-mobile">Contatta</span>
@@ -187,7 +202,7 @@ function Ad() {
             <button onClick={() => setIsCalendarModalOpen(true)}>
               <img
                 src={calendarIcon}
-                alt="Like"
+                alt="Calendar"
                 className="ad-buttons-icon"
               />
               <span className="interaction-count hide-on-mobile">

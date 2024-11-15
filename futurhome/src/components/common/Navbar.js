@@ -69,15 +69,7 @@ function Navbar({ openLogin, openSignup }) {
               Messaggi
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              to="/bookmarks"
-              activeClassName="active"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              Segnalibri
-            </NavLink>
-          </li>
+
           <li>
             <NavLink
               to="/profile"
@@ -122,14 +114,7 @@ function Navbar({ openLogin, openSignup }) {
             Messaggi
           </NavLink>
         </li>
-        <li>
-          <NavLink
-            to="/bookmarks"
-            activeClassName="active"
-          >
-            Segnalibri
-          </NavLink>
-        </li>
+
         <li>
           <NavLink
             to="/agency-profile"
