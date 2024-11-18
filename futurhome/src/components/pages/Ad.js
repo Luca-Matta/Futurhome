@@ -21,7 +21,7 @@ import adPicture3 from "../../static/ad-picture3.jpeg";
 import PietroRanteProfilePicture from "../../static/pietro.png";
 import { addLike, removeLike } from "../../utils/apiUtils";
 
-function Ad({ adDetails, adId }) {
+function Ad({ adDetails, adId, updateAdDetails }) {
   const [pictures, setPictures] = useState([]);
   const [isCalendarModalOpen, setIsCalendarModalOpen] = useState(false);
   console.log("Ad:", adDetails);
@@ -34,15 +34,20 @@ function Ad({ adDetails, adId }) {
 
   const handleLike = async () => {
     try {
-      if (adDetails.listing.liked) {
+      const updatedDetails = { ...adDetails };
+      if (updatedDetails.listing.liked) {
         await removeLike(adId);
-        console.log("Removed like");
+        updatedDetails.listing.liked = false;
+        updatedDetails.listing.like_count -= 1;
       } else {
         await addLike(adId);
-        console.log("Added like");
+        updatedDetails.listing.liked = true;
+        updatedDetails.listing.like_count += 1;
       }
+
+      updateAdDetails(adId, updatedDetails);
     } catch (error) {
-      console.error("Error toggling like:", error);
+      console.error(`Failed to toggle like for ad ${adId}:`, error.message);
     }
   };
 

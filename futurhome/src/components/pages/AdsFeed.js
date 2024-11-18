@@ -99,12 +99,20 @@ function AdsFeed() {
 
         setAdDetails(details);
       } catch (error) {
-        setError(error.message);
+        console.error("Error loading ads:", error.message);
+        setError("Failed to load ads. Please try again later.");
       }
     };
 
     loadAds();
   }, []);
+
+  const updateAdDetails = (adId, updatedDetails) => {
+    setAdDetails((prevDetails) => ({
+      ...prevDetails,
+      [adId]: updatedDetails,
+    }));
+  };
 
   return (
     <div className="ads-container">
@@ -118,6 +126,7 @@ function AdsFeed() {
               key={adId}
               adDetails={adDetails[adId]}
               adId={adId}
+              updateAdDetails={updateAdDetails}
             />
           ))
         ) : (
