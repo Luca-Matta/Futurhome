@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Ad from "./Ad";
 import Filters from "./Filters";
 import "../../styles/AdsFeed.css";
@@ -18,11 +19,17 @@ async function fetchAdsId(page = 0) {
       }
     );
 
+    console.log("Response data:", response.data);
+
     if (
       response.headers["content-type"] &&
       response.headers["content-type"].includes("application/json")
     ) {
       return response.data;
+    } else if (response.headers["content-type"].includes("text/html")) {
+      throw new Error(
+        "Unexpected HTML response received. Please check the API."
+      );
     } else {
       throw new Error("Invalid response format");
     }
@@ -50,9 +57,10 @@ async function fetchAdDetails(adId) {
       }
     );
 
+    console.log(`Details for ad ${adId}:`, response.data);
+
     return {
       ...response.data,
-      liked: response.data.liked || false, // Default liked status
     };
   } catch (error) {
     console.error(
@@ -65,32 +73,6 @@ async function fetchAdDetails(adId) {
   }
 }
 
-async function toggleLike(adId, liked) {
-  const preReleaseKey = "Hya4epmFOarYyVmX7xXlLyLnO0uAv7MB";
-  try {
-    const response = await axios.post(
-      `/api/post/${adId}/like-toggle`,
-      { liked },
-      {
-        headers: {
-          "Cache-Control": "no-cache",
-          Accept: "application/json",
-          "X-Pre-Release-Key": preReleaseKey,
-        },
-        withCredentials: true,
-      }
-    );
-
-    return response.data;
-  } catch (error) {
-    console.error(
-      `Error toggling like for ad ${adId}:`,
-      error.response ? error.response.data : error.message
-    );
-    throw new Error("Failed to update like status.");
-  }
-}
-
 function AdsFeed() {
   const [ads, setAds] = useState([]);
   const [adDetails, setAdDetails] = useState({});
@@ -100,13 +82,21 @@ function AdsFeed() {
     const loadAds = async () => {
       try {
         const adsData = await fetchAdsId(0);
+        console.log("Ads data received:", adsData);
         setAds(Array.isArray(adsData) ? adsData : []);
 
-        const details = {};
-        for (const adId of adsData) {
-          const adDetail = await fetchAdDetails(adId);
-          details[adId] = adDetail;
-        }
+        const adDetails = await Promise.all(
+          adsData.map(async (adId) => {
+            const adDetail = await fetchAdDetails(adId);
+            return { adId, adDetail };
+          })
+        );
+
+        const details = adDetails.reduce((acc, { adId, adDetail }) => {
+          acc[adId] = adDetail;
+          return acc;
+        }, {});
+
         setAdDetails(details);
       } catch (error) {
         setError(error.message);
@@ -115,18 +105,6 @@ function AdsFeed() {
 
     loadAds();
   }, []);
-
-  const handleLikeToggle = async (adId) => {
-    try {
-      const updatedAd = await toggleLike(adId, !adDetails[adId].liked);
-      setAdDetails((prevDetails) => ({
-        ...prevDetails,
-        [adId]: updatedAd,
-      }));
-    } catch (error) {
-      console.error("Failed to toggle like:", error);
-    }
-  };
 
   return (
     <div className="ads-container">
@@ -138,8 +116,8 @@ function AdsFeed() {
           ads.map((adId) => (
             <Ad
               key={adId}
-              ad={adDetails[adId]}
-              onLikeToggle={() => handleLikeToggle(adId)}
+              adDetails={adDetails[adId]}
+              adId={adId}
             />
           ))
         ) : (

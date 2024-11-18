@@ -2,6 +2,7 @@ export const addLike = async (postId) => {
   const preReleaseKey = "Hya4epmFOarYyVmX7xXlLyLnO0uAv7MB";
 
   console.log("postId:", postId);
+  console.log("Adding like...");
 
   if (!postId) {
     throw new Error("postId is required");
@@ -21,16 +22,6 @@ export const addLike = async (postId) => {
       const text = await response.text();
       console.error("Unexpected response format:", text);
       throw new Error("Unexpected response format");
-    }
-
-    const data = await response.json();
-
-    if (response.ok) {
-      console.log("Likes:", data.likes);
-      return data.likes;
-    } else {
-      console.error("Error:", data);
-      throw new Error(data.message || "Failed to add like");
     }
   } catch (error) {
     console.error("Error:", error);
@@ -42,13 +33,14 @@ export const removeLike = async (postId) => {
   const preReleaseKey = "Hya4epmFOarYyVmX7xXlLyLnO0uAv7MB";
 
   console.log("postId:", postId);
+  console.log("Removing like...");
 
   if (!postId) {
     throw new Error("postId is required");
   }
 
   try {
-    const response = await fetch(`/api/post/${postId}/add-like`, {
+    const response = await fetch(`/api/post/${postId}/remove-like`, {
       method: "POST",
       credentials: "include",
       headers: {
@@ -61,16 +53,6 @@ export const removeLike = async (postId) => {
       const text = await response.text();
       console.error("Unexpected response format:", text);
       throw new Error("Unexpected response format");
-    }
-
-    const data = await response.json();
-
-    if (response.ok) {
-      console.log("Likes:", data.likes);
-      return data.likes;
-    } else {
-      console.error("Error:", data);
-      throw new Error(data.message || "Failed to add like");
     }
   } catch (error) {
     console.error("Error:", error);

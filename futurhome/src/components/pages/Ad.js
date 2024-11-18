@@ -21,39 +21,34 @@ import adPicture3 from "../../static/ad-picture3.jpeg";
 import PietroRanteProfilePicture from "../../static/pietro.png";
 import { addLike, removeLike } from "../../utils/apiUtils";
 
-function Ad({ ad }) {
-  const [likeCount, setLikeCount] = useState(450);
-  const [liked, setLiked] = useState(false);
+function Ad({ adDetails, adId }) {
   const [pictures, setPictures] = useState([]);
   const [isCalendarModalOpen, setIsCalendarModalOpen] = useState(false);
+  console.log("Ad:", adDetails);
 
   useEffect(() => {
-    if (ad) {
+    if (adDetails) {
       setPictures([adPicture1, adPicture2, adPicture3]);
-      setLikeCount(ad.initialLikes || 450);
     }
-  }, [ad]);
-
-  if (!ad) {
-    return <div>Caricamento...</div>;
-  }
-
-  const { id } = ad.listing;
+  }, [adDetails]);
 
   const handleLike = async () => {
     try {
-      let newLikeCount;
-      if (liked) {
-        newLikeCount = await removeLike(id);
+      if (adDetails.listing.liked) {
+        await removeLike(adId);
+        console.log("Removed like");
       } else {
-        newLikeCount = await addLike(id);
+        await addLike(adId);
+        console.log("Added like");
       }
-      setLikeCount(newLikeCount);
-      setLiked(!liked);
     } catch (error) {
-      console.error("Failed to update like:", error);
+      console.error("Error toggling like:", error);
     }
   };
+
+  if (!adDetails) {
+    return <div>Caricamento...</div>;
+  }
 
   const totalPictures = pictures.length;
 
@@ -162,11 +157,13 @@ function Ad({ ad }) {
           <div className="ad-buttons">
             <button onClick={handleLike}>
               <img
-                src={liked ? yellowLikeIcon : likeIcon}
-                alt={liked ? "Unlike" : "Like"}
+                src={adDetails.listing.liked ? yellowLikeIcon : likeIcon}
+                alt={adDetails.listing.liked ? "Unlike" : "Like"}
                 className="ad-buttons-icon"
               />
-              <span className="interaction-count">{likeCount}</span>
+              <span className="interaction-count">
+                {adDetails.listing.like_count}
+              </span>
             </button>
             <button>
               <img
