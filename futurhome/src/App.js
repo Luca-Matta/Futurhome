@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./components/common/Navbar";
 import Home from "./components/pages/Home";
 import Modal from "./components/common/Modal";
 import LoginForm from "./components/pages/LoginForm";
 import SignupForm from "./components/pages/SignupForm";
+import OnboardingModal from "./components/common/OnboardingModal";
 import CreateAgency from "./components/common/CreateAgency";
 import PublishAdModal from "./components/common/PublishAdModal";
 import AdsFeed from "./components/pages/AdsFeed";
@@ -34,9 +35,18 @@ function ChatButtonWithLocation() {
 function App() {
   const [modalContent, setModalContent] = useState(null);
   const [isCreateAgencyOpen, setIsCreateAgencyOpen] = useState(false);
+  const [showOnboarding, setShowOnboarding] = useState(true);
+
+  useEffect(() => {
+    // You can set the flag based on conditions (e.g., whether the user has completed onboarding)
+    setShowOnboarding(true);
+  }, []);
 
   const openLogin = () => setModalContent("login");
   const openSignup = () => setModalContent("signup");
+  const closeModal = () => {
+    setModalContent(null);
+  };
   const openCreateAgency = () => setIsCreateAgencyOpen(true);
   const closeCreateAgency = () => setIsCreateAgencyOpen(false);
 
@@ -107,9 +117,18 @@ function App() {
               <SignupForm
                 openLogin={openLogin}
                 modalContent={modalContent}
+                closeModal={closeModal}
+                setShowOnboarding={setShowOnboarding}
+              />
+            )}
+            {showOnboarding && (
+              <OnboardingModal
+                closeModal={() => setShowOnboarding(false)}
+                handleOnboardingComplete={(data) => console.log(data)}
               />
             )}
           </Modal>
+
           <CreateAgency
             isOpen={isCreateAgencyOpen}
             setIsOpen={setIsCreateAgencyOpen}

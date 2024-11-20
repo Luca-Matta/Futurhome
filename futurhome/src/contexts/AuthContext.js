@@ -4,11 +4,19 @@ import axios from "axios";
 const AuthContext = createContext();
 
 async function register(email, password) {
+  const preReleaseKey = "Hya4epmFOarYyVmX7xXlLyLnO0uAv7MB";
   try {
-    const csrfResponse = await axios.get("/api/Auth/csrf-token");
+    const csrfResponse = await axios.get(
+      `/api/Auth/csrf-token?pre-release-key=${preReleaseKey}`,
+      {
+        headers: {
+          "X-Pre-Release-Key": preReleaseKey,
+        },
+      }
+    );
     const csrfToken = csrfResponse.data;
     const response = await axios.post(
-      "/api/Auth/register",
+      `/api/Auth/register?pre-release-key=${preReleaseKey}`,
       {
         email,
         password,
@@ -17,7 +25,9 @@ async function register(email, password) {
         headers: {
           "Content-Type": "application/json",
           "X-CSRF-Token": csrfToken,
+          "X-Pre-Release-Key": preReleaseKey,
         },
+        withCredentials: true,
       }
     );
     console.log("Register response:", response.data);

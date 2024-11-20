@@ -3,8 +3,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from "../../contexts/AuthContext";
 import axios from "axios";
+import OnboardingModal from "../common/OnboardingModal.js";
 
-function SignupForm({ openLogin, modalContent }) {
+function SignupForm({
+  openLogin,
+  modalContent,
+  closeModal,
+  setShowOnboarding,
+  showOnboarding,
+}) {
   const { register } = useContext(AuthContext);
   const [selectedOption, setSelectedOption] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -24,19 +31,6 @@ function SignupForm({ openLogin, modalContent }) {
     setDropdownOpen(false);
   };
 
-  // const getExplanation = (type) => {
-  //   switch (type) {
-  //     case "Sono un privato":
-  //       return "Info su privato";
-  //     case "Sono un'agenzia":
-  //       return "Info su agenzia";
-  //     case "Sono un professionista":
-  //       return "Info su professionista";
-  //     default:
-  //       return "Seleziona una categoria";
-  //   }
-  // };
-
   const handleInputChange = (event) => {
     setFormData({
       ...formData,
@@ -47,16 +41,12 @@ function SignupForm({ openLogin, modalContent }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // if (formData.password !== formData.confirmPassword) {
-    //   alert("Le password non corrispondono");
-    //   return;
-    // }
-
-    console.log(formData);
-
     try {
       const response = await register(formData.email, formData.password);
       console.log(response.data);
+
+      closeModal();
+      setShowOnboarding(true);
     } catch (error) {
       console.error(error);
     }
@@ -143,12 +133,7 @@ function SignupForm({ openLogin, modalContent }) {
           placeholder="Password"
           onChange={handleInputChange}
         />
-        {/* <input
-          type="password"
-          name="confirmPassword"
-          placeholder="Conferma password"
-          onChange={handleInputChange}
-        /> */}
+
         <button
           className="submit-button"
           type="submit"
@@ -168,6 +153,13 @@ function SignupForm({ openLogin, modalContent }) {
           Accedi
         </a>
       </p>
+
+      {showOnboarding && (
+        <OnboardingModal
+          closeModal={() => setShowOnboarding(false)}
+          handleOnboardingComplete={(data) => console.log(data)}
+        />
+      )}
     </div>
   );
 }
