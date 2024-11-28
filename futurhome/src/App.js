@@ -38,8 +38,7 @@ function App() {
   const [showOnboarding, setShowOnboarding] = useState(true);
 
   useEffect(() => {
-    // You can set the flag based on conditions (e.g., whether the user has completed onboarding)
-    setShowOnboarding(true);
+    setShowOnboarding(false);
   }, []);
 
   const openLogin = () => setModalContent("login");
@@ -104,8 +103,11 @@ function App() {
           </div>
           <PublishAdModal />
           <Modal
-            isOpen={modalContent !== null}
-            onClose={() => setModalContent(null)}
+            isOpen={modalContent !== null || showOnboarding}
+            onClose={() => {
+              setModalContent(null);
+              setShowOnboarding(false);
+            }}
           >
             {modalContent === "login" && (
               <LoginForm
@@ -124,7 +126,9 @@ function App() {
             {showOnboarding && (
               <OnboardingModal
                 closeModal={() => setShowOnboarding(false)}
-                handleOnboardingComplete={(data) => console.log(data)}
+                handleOnboardingComplete={(data) =>
+                  console.log("Onboarding complete", data)
+                }
               />
             )}
           </Modal>

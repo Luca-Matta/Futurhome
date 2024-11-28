@@ -38,6 +38,44 @@ async function register(email, password) {
   }
 }
 
+async function editUser(username, phoneNumber, profilePicture) {
+  const preReleaseKey = "Hya4epmFOarYyVmX7xXlLyLnO0uAv7MB";
+  try {
+    const csrfResponse = await axios.get(
+      `/api/Auth/csrf-token?pre-release-key=${preReleaseKey}`,
+      {
+        headers: {
+          "X-Pre-Release-Key": preReleaseKey,
+        },
+      }
+    );
+    const csrfToken = csrfResponse.data;
+
+    const formData = new FormData();
+    formData.append("username", username);
+    formData.append("phone_number", phoneNumber);
+    formData.append("image", profilePicture);
+
+    const response = await axios.post(
+      `/api/user/edit-user?pre-release-key=${preReleaseKey}`,
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          "X-CSRF-Token": csrfToken,
+          "X-Pre-Release-Key": preReleaseKey,
+        },
+        withCredentials: true,
+      }
+    );
+    console.log("Edit user response:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error response from server:", error.response);
+    throw error;
+  }
+}
+
 async function login(email, password) {
   const preReleaseKey = "Hya4epmFOarYyVmX7xXlLyLnO0uAv7MB";
   try {
@@ -355,6 +393,7 @@ function AuthProvider({ children }) {
         userEmail,
         userData,
         register,
+        editUser,
         createAgency,
         createAd,
         handleAuthError,

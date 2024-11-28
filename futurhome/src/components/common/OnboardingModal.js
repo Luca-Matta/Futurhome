@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "../../styles/OnboardingModal.css";
 import avatar from "../../static/icons/avatar.svg";
+import { AuthContext } from "../../contexts/AuthContext";
+import InputMask from "react-input-mask";
 
 function OnboardingModal({ closeModal, handleOnboardingComplete }) {
   const [currentPage, setCurrentPage] = useState(0);
@@ -8,13 +10,28 @@ function OnboardingModal({ closeModal, handleOnboardingComplete }) {
     name: "",
     phoneNumber: "",
     profilePicture: null,
+    profilePictureFile: null,
   });
 
+  const { editUser } = useContext(AuthContext);
+
   const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    const formattedValue =
+      name === "phoneNumber" ? formatPhoneNumber(value) : value;
     setFormData({
       ...formData,
-      [event.target.name]: event.target.value,
+      [name]: formattedValue,
     });
+  };
+
+  const formatPhoneNumber = (value) => {
+    const cleaned = ("" + value).replace(/\D/g, "");
+    const match = cleaned.match(/^(\d{0,3})(\d{0,3})(\d{0,4})$/);
+    if (match) {
+      return [match[1], match[2], match[3]].filter(Boolean).join("-");
+    }
+    return value;
   };
 
   const handleFileChange = (event) => {
@@ -23,6 +40,7 @@ function OnboardingModal({ closeModal, handleOnboardingComplete }) {
       setFormData({
         ...formData,
         profilePicture: URL.createObjectURL(file),
+        profilePictureFile: file,
       });
     }
   };
@@ -43,9 +61,19 @@ function OnboardingModal({ closeModal, handleOnboardingComplete }) {
     closeModal();
   };
 
-  const handleFinish = () => {
-    handleOnboardingComplete(formData);
-    closeModalHandler();
+  const handleFinish = async () => {
+    try {
+      await editUser(
+        formData.name,
+        formData.phoneNumber,
+        formData.profilePictureFile
+      );
+      handleOnboardingComplete(formData);
+      closeModalHandler();
+    } catch (error) {
+      console.error("Failed to edit user:", error);
+      alert("An error occurred while saving your details. Please try again.");
+    }
   };
 
   return (
